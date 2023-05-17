@@ -8,7 +8,9 @@ function Header() {
         <img className="header__logo" src={logo} alt="Логотип" />
         <div className='header__nav'>
           <p className='header__registration'>Регистрация</p>
-          <p className='header__login'>Войти</p>
+          <div className='header__login'>
+            <p className='header__login-text'>Войти</p>
+          </div>
         </div>
       </div>
     </header>
