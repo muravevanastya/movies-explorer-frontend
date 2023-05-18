@@ -22,6 +22,9 @@
 .header__registration {
   color: #FFFFFF;
   margin-right: 30px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .header__login {
@@ -37,4 +40,7 @@
 
 .header__login-text {
   align-self: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
 }
