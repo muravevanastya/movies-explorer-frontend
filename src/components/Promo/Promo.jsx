@@ -1,3 +1,4 @@
+import './Promo.css'
 import planet from '../../images/planet-web.svg';
 
 function Promo() {

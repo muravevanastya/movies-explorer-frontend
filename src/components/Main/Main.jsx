@@ -2,9 +2,9 @@ import Promo from "../Promo/Promo";
 
 function Main() {
   return (
-    <div className="main">
+    <main className="main">
       <Promo />
-    </div>
+    </main>
   )
 }
 
