@@ -1,11 +1,14 @@
 .promo {
   background-color: #073042;
+  display: flex;
+  justify-content: center;
 }
 
 .promo__container {
+  width: calc(100% - 70px * 2);
   display: flex;
   justify-content: space-between;
-  padding: 90px 70px;
+  padding: 90px 0;
 }
 
 .promo__title {
