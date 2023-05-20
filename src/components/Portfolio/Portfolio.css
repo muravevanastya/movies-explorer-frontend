@@ -17,12 +17,12 @@
 .portfolio__list {
   width: calc(100% - 70px * 2);
   list-style: none;
-  margin-bottom: 125px;
+  margin-bottom: 183px;
 }
 
 .portfolio__list-item {
   border-bottom: 1px solid #E8E8E8;
-  padding-bottom: 19px;
+  padding-bottom: 10px;
   margin-top: 20px;
 }
 
