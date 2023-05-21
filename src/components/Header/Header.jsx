@@ -5,11 +5,13 @@ function Header() {
   return (
     <header className="header">
       <div className='header__container'>
-        <img className="header__logo" src={logo} alt="Логотип" />
+        <a href='/'>
+          <img className="header__logo" src={logo} alt="Логотип" />
+        </a>
         <div className='header__nav'>
-          <p className='header__registration'>Регистрация</p>
+          <a href='/' className='header__registration'>Регистрация</a>
           <div className='header__login'>
-            <p className='header__login-text'>Войти</p>
+            <a href='/' className='header__login-text'>Войти</a>
           </div>
         </div>
       </div>

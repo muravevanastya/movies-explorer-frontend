@@ -12,7 +12,7 @@ function AboutMe() {
           <p className='about-me__text'>Я родилась в Калининграде, жила в Санкт-Петербурге, училась в Нидерландах, а полгода назад переехала на Кипр.
           Променяла карьеру экономиста на путь программиста. Год назад начала проходить курсы по веб-разработке от Яндекс Практикума и с тех пор развиваюсь
           в этой сфере.</p>
-          <p className='about-me__github'>Github</p>
+          <a href='https://github.com/muravevanastya' className='about-me__github' target='_blank'>Github</a>
         </div>
         <img className='about-me__photo' src={studentPhoto} alt="Фото Анастасии" />
       </div>

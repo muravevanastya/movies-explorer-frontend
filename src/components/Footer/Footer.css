@@ -41,7 +41,7 @@
 
 .footer__nav-list-item:hover {
   opacity: 0.6;
-  transition: opacity .2s ease-in-out;
+  transition: .2s ease-in-out;
 }
 
 .footer__nav-list-item:first-of-type {

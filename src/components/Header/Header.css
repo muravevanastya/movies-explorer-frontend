@@ -17,6 +17,11 @@
   height: 38px;
 }
 
+.header__logo:hover {
+  opacity: 0.6;
+  transition: .2s ease-in-out;
+}
+
 .header__nav {
   display: flex;
   align-items: center;
@@ -28,6 +33,12 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+  text-decoration: none;
+}
+
+.header__registration:hover {
+  opacity: 0.6;
+  transition: .2s ease-in-out;
 }
 
 .header__login {
@@ -41,11 +52,18 @@
   justify-content: center;
 }
 
+.header__login:hover {
+  opacity: 0.6;
+  transition: .2s ease-in-out;
+}
+
 .header__login-text {
   align-self: center;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+  text-decoration: none;
+  color: #000000;
 }
 
 @media screen and (max-width: 769px) {
