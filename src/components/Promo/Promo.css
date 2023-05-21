@@ -52,6 +52,11 @@
   height: 36px;
 }
 
+.promo__more-button:hover {
+  opacity: 0.6;
+  transition: opacity .2s ease-in-out;
+}
+
 .promo__more-button-text {
   text-decoration: none;
   color: #FFFFFF;
