@@ -9,10 +9,10 @@ function Footer() {
         <nav className='footer__nav'>
           <ul className='footer__nav-list'>
             <li className='footer__nav-list-item'>
-              <a className='footer__nav-list-item-link' href="#">Яндекс.Практикум</a>
+              <a className='footer__nav-list-item-link' href='https://practicum.yandex.ru/' target='_blank'>Яндекс.Практикум</a>
             </li>
             <li className='footer__nav-list-item'>
-              <a className='footer__nav-list-item-link' href="#">Github</a>
+              <a className='footer__nav-list-item-link' href='https://github.com/muravevanastya' target='_blank'>Github</a>
             </li>
           </ul>
         </nav>

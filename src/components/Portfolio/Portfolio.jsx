@@ -7,19 +7,19 @@ function Portfolio() {
       <h4 className='portfolio__title'>Портфолио</h4>
       <ul className='portfolio__list'>
         <li className='portfolio__list-item'>
-          <a className='portfolio__list-item-link' href='#'>
+          <a className='portfolio__list-item-link' href='https://muravevanastya.github.io/how-to-learn/' target='_blank'>
             <p className='portfolio__list-item-link-text'>Статичный сайт</p>
             <img className='portfolio__list-item-link-img' src={arrow} alt='Стрелка' />
           </a>
         </li>
         <li className='portfolio__list-item'>
-          <a className='portfolio__list-item-link' href='#'>
+          <a className='portfolio__list-item-link' href='https://muravevanastya.github.io/russian-travel/' target='_blank'>
             <p className='portfolio__list-item-link-text'>Адаптивный сайт</p>
             <img className='portfolio__list-item-link-img' src={arrow} alt='Стрелка' />
           </a>
         </li>
         <li className='portfolio__list-item'>
-          <a className='portfolio__list-item-link' href='#'>
+          <a className='portfolio__list-item-link' href='https://places.nomoredomains.monster/' target='_blank'>
             <p className='portfolio__list-item-link-text'>Одностраничное приложение</p>
             <img className='portfolio__list-item-link-img' src={arrow} alt='Стрелка' />
           </a>
