@@ -1,0 +1,41 @@
+.movie {
+  width: 89%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #F9F9F9;
+  margin-bottom: 33px;
+}
+
+.movie:last-of-type {
+  margin-bottom: 50px;
+}
+
+.movie__info {
+  margin: 22px;
+}
+
+.movie__name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 13px;
+}
+
+.movie__duration {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  color: #A0A0A0;
+  margin-bottom: 30px;
+}
+
+.movie__save {
+  width: 22px;
+  height: 12px;
+}
+
+.movie__photo {
+  width: 220px;
+  height: 122px;
+  margin: 6px 6px 6px 0;
+}
