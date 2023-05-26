@@ -2,6 +2,7 @@
   width: 89%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #F9F9F9;
   margin-bottom: 33px;
 }
@@ -37,5 +38,5 @@
 .movie__photo {
   width: 220px;
   height: 122px;
-  margin: 6px 6px 6px 0;
+  margin-right: 6px;
 }

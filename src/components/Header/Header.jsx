@@ -1,19 +1,19 @@
+import React from 'react';
 import logo from '../../images/logo.svg';
-import './Header.css'
+import './Header.css';
+import Navigation from '../Navigation/Navigation';
+import { Link, useLocation } from 'react-router-dom';
 
 function Header() {
+  const location = useLocation();
+
   return (
-    <header className="header">
+    <header className={`header ${location.pathname !== '/' ? 'header__loggedin' : ''}`}>
       <div className='header__container'>
-        <a href='/'>
+        <Link to='/'>
           <img className="header__logo" src={logo} alt="Логотип" />
-        </a>
-        <div className='header__nav'>
-          <a href='/' className='header__registration'>Регистрация</a>
-          <div className='header__login'>
-            <a href='/' className='header__login-text'>Войти</a>
-          </div>
-        </div>
+        </Link>
+        <Navigation />
       </div>
     </header>
   )
