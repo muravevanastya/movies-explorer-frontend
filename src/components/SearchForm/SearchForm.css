@@ -3,11 +3,13 @@
   padding: 86px 0 69px;
   display: flex;
   justify-content: center;
+  width: 89%;
+  margin: 0 auto;
 }
 
 .search-form__container {
   background: #F9F9F9;
-  width: 89%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
