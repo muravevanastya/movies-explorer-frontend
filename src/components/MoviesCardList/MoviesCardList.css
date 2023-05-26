@@ -22,3 +22,15 @@
   opacity: 0.6;
   transition: .2s ease-in-out;
 }
+
+@media screen and (max-width: 769px) {
+  .movies-cards__container {
+    padding: 70px 0 159px;
+  }
+}
+
+@media screen and (max-width: 321px) {
+  .movies-cards__container {
+    padding: 50px 0 160px;
+  }
+}

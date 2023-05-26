@@ -85,10 +85,12 @@
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 41px;
+    width: 91%;
   }
 
   .portfolio__list {
     margin-bottom: 149px;
+    width: 91%;
   }
 
   .portfolio__list-item {

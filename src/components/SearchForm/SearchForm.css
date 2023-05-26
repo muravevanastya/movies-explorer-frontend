@@ -1,4 +1,4 @@
-.search-form {
+.movies__search-form {
   border-bottom: 1px solid #E8E8E8;
   padding: 86px 0 69px;
   display: flex;
@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 9px;
+  border-radius: 9px 0 0 9px;
 }
 
 .search-form__input-container {
@@ -23,6 +23,9 @@
 }
 
 .search-form__icon {
+  background-image: url(../../images/search-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
   width: 15px;
   height: 15px;
   margin: 0 20px 0 29px;
@@ -64,4 +67,38 @@
 .search-form__button:hover {
   opacity: 0.8;
   transition: .2s ease-in-out;
+}
+
+@media screen and (max-width: 769px) {
+  .movies__search-form {
+    width: 92%;
+    padding: 97px 0 111px;
+  }
+
+  .search-form__button {
+    margin-right: 19px;
+  }
+}
+
+@media screen and (max-width: 321px) {
+  .movies__search-form {
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+
+  .search-form__icon {
+    background-image: none;
+    margin: 0;
+  }
+
+  .search-form__input {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 23px 3px;
+  }
+
+  .search-form__button {
+    margin-right: 17px;
+  }
 }

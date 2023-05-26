@@ -29,34 +29,13 @@
 @media screen and (max-width: 769px) {
   .header__container {
     width: calc(100% - 30px * 2);
-  }
-
-  .header__login {
-    border: none;
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .header__container {
-    width: calc(100% - 14px * 2);
+    padding-top: 15px;
   }
 }
 
 @media screen and (max-width: 321px) {
-  .header__registration {
-    font-size: 10px;
-    line-height: 16px;
-    margin-right: 14px;
-  }
-
-  .header__login {
-    width: 54px;
-    height: 26px;
-  }
-
-  .header__login-text {
-    font-size: 10px;
-    line-height: 16px;
+  .header__container {
+    width: calc(100% - 14px * 2);
+    padding-top: 18px;
   }
 }
