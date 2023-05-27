@@ -33,8 +33,18 @@
 }
 
 .movie__save {
+  background: url('../../images/heart.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
   width: 22px;
   height: 12px;
+  cursor: pointer;
+}
+
+.movie__save:hover {
+  opacity: 0.6;
+  transition: .2s ease-in-out;
 }
 
 .movie__photo {

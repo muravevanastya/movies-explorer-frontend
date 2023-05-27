@@ -1,5 +1,4 @@
 import './MoviesCard.css';
-import heart from '../../images/heart.svg';
 import moviePhoto from '../../images/movie-photo.jpg';
 
 function MoviesCard(props) {
@@ -10,7 +9,7 @@ function MoviesCard(props) {
           <p className='movie__name'>{props.movie.name}</p>
           <p className='movie__duration'>1ч 42м</p>
         </div>
-        <img className='movie__save' src={heart} alt="Добавить в избранное" />
+        <button className='movie__save'></button>
       </div>
       <img className='movie__photo' src={moviePhoto} alt="Картинка фильма" />
     </div>
