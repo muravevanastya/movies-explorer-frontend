@@ -3,7 +3,6 @@ import './BurgerMenu.css';
 import { Link, useLocation } from 'react-router-dom';
 import accountIcon from '../../images/account-icon.svg';
 import closeButton from '../../images/close-btn.svg';
-import Header from "../Header/Header";
 
 function BurgerMenu() {
   const location = useLocation();

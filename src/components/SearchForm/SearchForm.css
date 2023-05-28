@@ -80,7 +80,7 @@
   }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 540px) {
   .movies__search-form {
     flex-direction: column;
     padding-bottom: 0;
