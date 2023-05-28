@@ -122,3 +122,26 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .burger-menu__navigation {
+    width: 100%;
+  }
+
+  .burger-menu__close-button {
+    top: 4px;
+    right: 14px;
+  }
+
+  .burger-menu__list {
+    margin-top: 145px;
+  }
+
+  .burger-menu__list-item {
+    margin-bottom: 24px;
+  }
+
+  .burger-menu__list-item-account {
+    margin-top: 419px;
+  }
+}
