@@ -3,6 +3,7 @@ import logo from '../../images/logo.svg';
 import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import { Link, useLocation } from 'react-router-dom';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Header() {
   const location = useLocation();
@@ -14,6 +15,7 @@ function Header() {
           <img className="header__logo" src={logo} alt="Логотип" />
         </Link>
         <Navigation />
+        <BurgerMenu />
       </div>
     </header>
   )

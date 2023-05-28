@@ -18,7 +18,7 @@ function Navigation() {
           </li>
         </ul>
       ) : (
-        <ul className='navigation__list'>
+        <ul className='navigation__list navigation__list-hidden'>
           <li className='navigation__list-item'>
             <Link to='/movies' className='navigation__list-item-films'>Фильмы</Link>
           </li>
