@@ -83,3 +83,40 @@
   color: #3456F3;
   text-decoration: none;
 }
+
+@media screen and (max-width: 769px) {
+  .register__container {
+    padding-top: 232px;
+  }
+}
+
+@media screen and (max-width: 321px) {
+  .register__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 56px;
+  }
+
+  .register__title {
+    margin-top: 50px;
+  }
+
+  .register__form {
+    margin-top: 80px;
+  }
+
+  .register__button {
+    font-size: 12px;
+    line-height: 15px;
+    width: 260px;
+    padding: 15px 68px;
+    margin-top: 161px;
+  }
+
+  .register__signin {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 14px;
+  }
+}
