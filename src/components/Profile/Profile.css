@@ -13,11 +13,11 @@
 
 .profile__form {
   margin-top: 123px;
+  width: 32%;
 }
 
 .profile__fieldset {
   border: none;
-  width: 410px;
 }
 
 .profile__items {
@@ -72,4 +72,34 @@
 .profile__settings-button:hover {
   opacity: 0.6;
   transition: .2s ease-in-out;
+}
+
+@media screen and (max-width: 769px) {
+  .profile__title {
+    margin-top: 253px;
+  }
+
+  .profile__form {
+    margin-top: 96px;
+    width: 53%;
+  }
+
+  .profile__settings {
+    margin-top: 190px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .profile__title {
+    margin-top: 84px;
+  }
+
+  .profile__form {
+    width: 81%;
+    margin-top: 80px;
+  }
+
+  .profile__settings {
+    margin-top: 358px;
+  }
 }
