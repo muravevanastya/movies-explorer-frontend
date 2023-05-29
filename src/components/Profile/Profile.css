@@ -57,6 +57,8 @@
 .profile__settings-button {
   background: none;
   border: none;
+  font-family: 'Inter';
+  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -80,7 +82,7 @@
   }
 
   .profile__form {
-    margin-top: 96px;
+    margin: 96px 0 269px;
     width: 53%;
   }
 
@@ -96,10 +98,15 @@
 
   .profile__form {
     width: 81%;
-    margin-top: 80px;
+    margin: 80px 0 40px;
   }
 
   .profile__settings {
     margin-top: 358px;
+  }
+
+  .profile__settings-button {
+    font-size: 12px;
+    line-height: 15px;
   }
 }
