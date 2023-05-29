@@ -69,7 +69,7 @@
   }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 650px) {
   .search-form__filter {
     background-color: #fff;
     justify-content: center;
