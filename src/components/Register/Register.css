@@ -13,6 +13,11 @@
   height: 38px;
 }
 
+.register__logo:hover {
+  opacity: 0.8;
+  transition: .2s ease-in-out;
+}
+
 .register__title {
   margin-top: 37px;
   font-weight: 500;
@@ -63,6 +68,12 @@
   padding: 13px 124px;
   margin-top: 73px;
   width: 396px;
+  cursor: pointer;
+}
+
+.register__button:hover {
+  opacity: 0.8;
+  transition: .2s ease-in-out;
 }
 
 .register__signin {
@@ -77,6 +88,11 @@
 .register__signin-link {
   color: #3456F3;
   text-decoration: none;
+}
+
+.register__signin-link:hover {
+  opacity: 0.6;
+  transition: .2s ease-in-out;
 }
 
 @media screen and (max-width: 769px) {

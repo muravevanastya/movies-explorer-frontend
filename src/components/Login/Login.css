@@ -13,6 +13,11 @@
   height: 38px;
 }
 
+.login__logo:hover {
+  opacity: 0.8;
+  transition: .2s ease-in-out;
+}
+
 .login__title {
   margin-top: 37px;
   font-weight: 500;
@@ -63,6 +68,12 @@
   padding: 13px 124px;
   margin-top: 160px;
   width: 396px;
+  cursor: pointer;
+}
+
+.login__button:hover {
+  opacity: 0.8;
+  transition: .2s ease-in-out;
 }
 
 .login__signup {
@@ -77,6 +88,11 @@
 .login__signup-link {
   color: #3456F3;
   text-decoration: none;
+}
+
+.login__signup-link:hover {
+  opacity: 0.6;
+  transition: .2s ease-in-out;
 }
 
 @media screen and (max-width: 769px) {

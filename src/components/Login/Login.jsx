@@ -6,7 +6,9 @@ function Login() {
   return (
   <main className='login'>
     <div className='login__container'>
-      <img className='login__logo' src={logo} alt='Логотип' />
+      <Link to='/'>
+        <img className="login__logo" src={logo} alt="Логотип" />
+      </Link>
       <h2 className='login__title'>Рады видеть!</h2>
       <form className='login__form'>
         <fieldset className='login__fieldset'>
