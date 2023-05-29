@@ -1,5 +1,6 @@
 import './Profile.css';
 import Header from '../Header/Header';
+import { Link } from 'react-router-dom';
 
 function Profile() {
   return (
@@ -21,8 +22,8 @@ function Profile() {
           <input className='profile__items-input' type='email' id='email' />
         </fieldset>
         <div className='profile__settings'>
-          <button className='profile__settings-button'>Редактировать</button>
-          <button className='profile__settings-button'>Выйти из аккаунта</button>
+          <button className='profile__settings-update'>Редактировать</button>
+          <Link to='/signin' className='profile__settings-signout'>Выйти из аккаунта</Link>
         </div>
       </form>
     </main>
