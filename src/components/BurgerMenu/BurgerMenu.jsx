@@ -40,7 +40,6 @@ function BurgerMenu() {
         </nav>
       </div>
     </div>
-
   )
 }
 
