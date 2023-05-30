@@ -1,0 +1,133 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register__container {
+  padding: 70px 0;
+}
+
+.register__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.register__logo:hover {
+  opacity: 0.8;
+  transition: .2s ease-in-out;
+}
+
+.register__title {
+  margin-top: 37px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.register__form {
+  margin-top: 40px;
+}
+
+.register__fieldset {
+  border: none;
+  width: 100%;
+  margin: 0;
+}
+
+.register__input {
+  margin-bottom: 20px;
+}
+
+.register__input-name {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #A0A0A0;
+  margin-bottom: 10px;
+}
+
+.register__input-item {
+  border: none;
+  background-color: #F9F9F9;
+  border-radius: 8px;
+  width: 96%;
+  padding: 15px 0 15px 15px;
+}
+
+.register__button {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  background: #3456F3;
+  border-radius: 3px;
+  border: none;
+  color: #FFFFFF;
+  padding: 13px 124px;
+  margin-top: 73px;
+  width: 396px;
+  cursor: pointer;
+}
+
+.register__button:hover {
+  opacity: 0.8;
+  transition: .2s ease-in-out;
+}
+
+.register__signin {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+  margin-top: 17px;
+  text-align: center;
+}
+
+.register__signin-link {
+  color: #3456F3;
+  text-decoration: none;
+}
+
+.register__signin-link:hover {
+  opacity: 0.6;
+  transition: .2s ease-in-out;
+}
+
+@media screen and (max-width: 769px) {
+  .register__container {
+    padding: 232px 0;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .register__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 56px 0 30px;
+  }
+
+  .register__title {
+    margin-top: 46px;
+  }
+
+  .register__form {
+    margin-top: 80px;
+  }
+
+  .register__button {
+    font-size: 12px;
+    line-height: 15px;
+    width: 260px;
+    padding: 15px 68px;
+    margin-top: 161px;
+  }
+
+  .register__signin {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 14px;
+  }
+}

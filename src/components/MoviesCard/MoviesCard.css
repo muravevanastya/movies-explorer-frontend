@@ -1,0 +1,104 @@
+.movie {
+  width: 89%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F9F9F9;
+  margin-bottom: 40px;
+}
+
+.movie:last-of-type {
+  margin-bottom: 60px;
+}
+
+.movie__description {
+  display: flex;
+  flex-direction: column;
+  margin: 22px 0 22px 22px;
+}
+
+.movie__name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 13px;
+}
+
+.movie__duration {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  color: #A0A0A0;
+  margin-bottom: 30px;
+}
+
+.movie__save {
+  background: url('../../images/heart.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  width: 22px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.movie__save:hover {
+  opacity: 0.6;
+  transition: .2s ease-in-out;
+}
+
+.movie__photo {
+  width: 220px;
+  height: 122px;
+  margin-right: 6px;
+}
+
+@media screen and (max-width: 769px) {
+  .movie {
+    width: 92%;
+  }
+
+  .movie:last-of-type {
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .movie {
+    flex-direction: column-reverse;
+    margin-bottom: 20px;
+  }
+
+  .movie:last-of-type {
+    margin-bottom: 70px;
+  }
+
+  .movie__description {
+    margin: 14px 0;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 94%;
+  }
+
+  .movie__duration {
+    margin: 0;
+  }
+
+  .movie__photo {
+    width: 100%;
+    height: 230px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .movie__name {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 8px;
+  }
+
+  .movie__photo {
+    width: 100%;
+    height: 168px;
+  }
+}

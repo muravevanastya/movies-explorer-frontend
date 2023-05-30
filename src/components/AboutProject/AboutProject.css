@@ -1,0 +1,145 @@
+.about-project {
+  width: 100%;
+  padding: 111px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-project__title {
+  width: 89%;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 23px;
+}
+
+.about-project__description {
+  width: 89%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 26px;
+  column-gap: 40px;
+  margin-top: 70px;
+}
+
+.about-project__subtitle {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+}
+
+.about-project__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__description-in-weeks {
+  display: grid;
+  grid-template-columns: 20% auto;
+  row-gap: 14px;
+  margin-top: 110px;
+  width: 89%;
+}
+
+.about-project__backend-weeks {
+  background-color: #2BE080;
+  width: 100%;
+  padding: 9px 0;
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.about-project__frontend-weeks {
+  background-color: #F2F2F2;
+  width: 100%;
+  padding: 9px 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.about-project__description-in-weeks-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+  text-align: center;
+}
+
+@media screen and (max-width: 769px) {
+  .about-project {
+    padding: 90px 0;
+  }
+
+  .about-project__description {
+    row-gap: 22px;
+    column-gap: 30px;
+  }
+
+  .about-project__description-in-weeks {
+    margin-top: 87px;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .about-project {
+    padding: 70px 0;
+  }
+
+  .about-project__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 28px;
+  }
+
+  .about-project__description {
+    grid-template-columns: 1fr;
+    margin-top: 60px;
+    row-gap: 16px;
+  }
+
+  .about-project__subtitle {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__subtitle:last-of-type {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 40px;
+  }
+
+  .about-project__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__description-in-weeks {
+    grid-template-columns: 35% auto;
+    row-gap: 10px;
+    margin-top: 62px;
+  }
+
+  .about-project__backend-weeks {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__frontend-weeks {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__description-in-weeks-text {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
