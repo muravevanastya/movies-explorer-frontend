@@ -70,6 +70,13 @@ function App() {
       })
   }
 
+  function handleSignOut() {
+    localStorage.removeItem('jwt');
+    setEmail('');
+    setIsLoggedIn(false);
+    // setCurrentUser({});
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -84,7 +91,9 @@ function App() {
             element={<SavedMovies />}
           />
           <Route path='/profile'
-            element={<Profile />}
+            element={<Profile
+            handleSignOut={handleSignOut}
+          />}
           />
           <Route path='/signin'
             element={<Login 

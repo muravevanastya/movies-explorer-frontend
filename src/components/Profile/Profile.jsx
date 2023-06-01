@@ -2,7 +2,7 @@ import './Profile.css';
 import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
 
-function Profile() {
+function Profile({ handleSignOut }) {
   return (
     <>
     <Header/>
@@ -23,7 +23,7 @@ function Profile() {
         </fieldset>
         <div className='profile__settings'>
           <button className='profile__settings-update'>Редактировать</button>
-          <Link to='/signin' className='profile__settings-signout'>Выйти из аккаунта</Link>
+          <Link to='/signin' className='profile__settings-signout' onClick={handleSignOut}>Выйти из аккаунта</Link>
         </div>
       </form>
     </main>
