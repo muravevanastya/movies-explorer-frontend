@@ -8,6 +8,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import * as auth from '../../utils/Auth';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
   const navigate = useNavigate()
@@ -15,6 +16,7 @@ function App() {
   // const [isLoggedIn, setIsLoggedIn] = React.useState(false)
   // const [email, setEmail] = React.useState('')
   // const [signupSuccess, setSignupSuccess] = React.useState(false)
+  const [currentUser, setCurrentUser] = React.useState({})
 
 
 
@@ -24,6 +26,7 @@ function App() {
   //     auth.checkToken(jwt)
   //       .then((res) => {
   //         if(res) {
+              // setCurrentUser(res.user)
   //           setIsLoggedIn(true);
   //           setEmail(res.data.email);
   //           navigate('/', { replace: true })
@@ -51,33 +54,35 @@ function App() {
   }
 
   return (
-    <div className="page">
-      <Routes>
-        <Route path='/'
-          element={<Main />}
-        />
-        <Route path='/movies'
-          element={<Movies />}
-        />
-        <Route path='/saved-movies'
-          element={<SavedMovies />}
-        />
-        <Route path='/profile'
-          element={<Profile />}
-        />
-        <Route path='/signin'
-          element={<Login />}
-        />
-        <Route path='/signup'
-          element={<Register
-          onRegister={handleRegister}
-          />}
-        />
-        <Route path='*'
-          element={<NotFound />}
-        />
-      </Routes>
-    </div>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <Routes>
+          <Route path='/'
+            element={<Main />}
+          />
+          <Route path='/movies'
+            element={<Movies />}
+          />
+          <Route path='/saved-movies'
+            element={<SavedMovies />}
+          />
+          <Route path='/profile'
+            element={<Profile />}
+          />
+          <Route path='/signin'
+            element={<Login />}
+          />
+          <Route path='/signup'
+            element={<Register
+            onRegister={handleRegister}
+            />}
+          />
+          <Route path='*'
+            element={<NotFound />}
+          />
+        </Routes>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
