@@ -13,22 +13,22 @@ export const register = ({ password, email, name }) => {
   .then(handleResponse)
 }
 
-// export const authorize = (password, email) => {
-//   return fetch(`${BASE_URL}/signin`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({password, email})
-//   })
-//   .then(handleResponse)
-//   .then((data) => {
-//     if (data.token) {
-//       localStorage.setItem('jwt', data.token)
-//       return data.token
-//     }
-//   })
-// }
+export const authorize = (password, email) => {
+  return fetch(`${BASE_URL}/signin`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ password, email })
+  })
+  .then(handleResponse)
+  .then((data) => {
+    if (data.jwt) {
+      localStorage.setItem('jwt', data.jwt)
+      return data.jwt
+    }
+  })
+}
 
 export const checkToken = (jwt) => {
   return fetch(`${BASE_URL}/users/me`, {
