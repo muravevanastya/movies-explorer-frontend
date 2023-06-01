@@ -17,7 +17,7 @@ function Login({ onAuth }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAuth({ password, email })
+    onAuth(password, email)
   }
 
   return (
@@ -55,7 +55,7 @@ function Login({ onAuth }) {
             />
           </div>
         </fieldset>
-        <button className='login__button'>Войти</button>
+        <button className='login__button' type='submit'>Войти</button>
       </form>
       <p className='login__signup'>Ещё не зарегистрированы? <Link className='login__signup-link' to='/signup'>Регистрация</Link></p>
     </div>

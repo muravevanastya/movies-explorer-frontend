@@ -9,36 +9,37 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import * as auth from '../../utils/Auth';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { api } from '../../utils/MainApi';
 
 function App() {
   const navigate = useNavigate()
 
-  // const [isLoggedIn, setIsLoggedIn] = React.useState(false)
-  // const [email, setEmail] = React.useState('')
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false)
+  const [email, setEmail] = React.useState('')
   // const [signupSuccess, setSignupSuccess] = React.useState(false)
   const [currentUser, setCurrentUser] = React.useState({})
 
 
 
-  // function checkToken() {
-  //   const jwt = localStorage.getItem('jwt');
-  //   if (jwt) {
-  //     auth.checkToken(jwt)
-  //       .then((res) => {
-  //         if(res) {
-              // setCurrentUser(res.user)
-  //           setIsLoggedIn(true);
-  //           setEmail(res.data.email);
-  //           navigate('/', { replace: true })
-  //         }
-  //       })
-  //       .catch(err => console.log(err));
-  //   }
-  // }
+  function checkToken() {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.checkToken(jwt)
+        .then((res) => {
+          if(res) {
+            setCurrentUser(res.user)
+            setIsLoggedIn(true);
+            setEmail(res.email);
+            navigate('/', { replace: true })
+          }
+        })
+        .catch(err => console.log(err));
+    }
+  }
 
-  // React.useEffect(() => {
-  //   checkToken()
-  // })
+  React.useEffect(() => {
+    checkToken()
+  }, [])
 
   function handleRegister({ password, email, name }) {
     auth.register({ password, email, name })
@@ -51,6 +52,22 @@ function App() {
         // setSignupSuccess(false);
       })
       // .finally(() => )
+  }
+
+  function handleAuth(password, email) {
+    auth.authorize(password, email)
+      .then(() => {
+        api.getUserInfo()
+          .then((res) => {
+            setCurrentUser(res.user)
+            setIsLoggedIn(true)
+            setEmail(res.email)
+            navigate('/movies', { replace: true })
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      })
   }
 
   return (
@@ -70,12 +87,14 @@ function App() {
             element={<Profile />}
           />
           <Route path='/signin'
-            element={<Login />}
+            element={<Login 
+            onAuth={handleAuth}
+          />}
           />
           <Route path='/signup'
             element={<Register
             onRegister={handleRegister}
-            />}
+          />}
           />
           <Route path='*'
             element={<NotFound />}
