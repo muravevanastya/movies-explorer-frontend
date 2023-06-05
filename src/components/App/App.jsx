@@ -10,6 +10,8 @@ import NotFound from '../NotFound/NotFound';
 import * as auth from '../../utils/Auth';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { api } from '../../utils/MainApi';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function App() {
   const navigate = useNavigate()
@@ -30,7 +32,7 @@ function App() {
             setCurrentUser(res.user)
             setIsLoggedIn(true);
             setEmail(res.email);
-            navigate('/', { replace: true })
+            // navigate('/', { replace: true })
           }
         })
         .catch(err => console.log(err));
@@ -82,18 +84,41 @@ function App() {
       <div className="page">
         <Routes>
           <Route path='/'
-            element={<Main />}
+            element={
+              <>
+              <Header isLoggedIn={isLoggedIn} />
+              <Main />
+              <Footer />
+              </>
+            }
           />
           <Route path='/movies'
-            element={<Movies />}
+            element={
+              <>
+              <Header isLoggedIn={isLoggedIn} />
+              <Movies />
+              <Footer />
+              </>
+            }
           />
           <Route path='/saved-movies'
-            element={<SavedMovies />}
+            element={
+              <>
+              <Header isLoggedIn={isLoggedIn} />
+              <SavedMovies />
+              <Footer />
+              </>
+            }
           />
           <Route path='/profile'
-            element={<Profile
-            handleSignOut={handleSignOut}
-          />}
+            element={
+              <>
+              <Header isLoggedIn={isLoggedIn} />
+              <Profile
+                handleSignOut={handleSignOut}
+              />
+              </>
+            }
           />
           <Route path='/signin'
             element={<Login 

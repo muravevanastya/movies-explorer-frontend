@@ -1,11 +1,8 @@
 import './Profile.css';
-import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
 
 function Profile({ handleSignOut }) {
   return (
-    <>
-    <Header/>
     <main className='profile'>
       <h2 className='profile__title'>Привет, Анастасия!</h2>
       <form className='profile__form'>
@@ -27,7 +24,6 @@ function Profile({ handleSignOut }) {
         </div>
       </form>
     </main>
-    </>
   )
 }
 

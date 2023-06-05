@@ -1,7 +1,3 @@
-.burger-menu-hidden {
-  display: none;
-}
-
 .burger-menu__button {
   position: absolute;
   background: url('../../images/burger-menu-button.svg');
@@ -115,12 +111,6 @@
 .burger-menu__list-item-account:hover {
   opacity: 0.6;
   transition: .2s ease-in-out;
-}
-
-@media screen and (min-width: 770px) {
-  .burger-menu  {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 500px) {
