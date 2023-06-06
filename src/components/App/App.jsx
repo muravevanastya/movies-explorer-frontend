@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -12,6 +12,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { api } from '../../utils/MainApi';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import ProtectedRouteElement from '../ProtectedRouteElement/ProtectedRouteElement';
 
 function App() {
   const navigate = useNavigate()
@@ -96,7 +97,10 @@ function App() {
             element={
               <>
               <Header isLoggedIn={isLoggedIn} />
-              <Movies />
+              <ProtectedRouteElement 
+                component={Movies}
+                isLoggedIn={isLoggedIn}
+              />
               <Footer />
               </>
             }
@@ -105,7 +109,10 @@ function App() {
             element={
               <>
               <Header isLoggedIn={isLoggedIn} />
-              <SavedMovies />
+              <ProtectedRouteElement 
+                component={SavedMovies}
+                isLoggedIn={isLoggedIn}
+              />
               <Footer />
               </>
             }
@@ -114,18 +121,22 @@ function App() {
             element={
               <>
               <Header isLoggedIn={isLoggedIn} />
-              <Profile
+              <ProtectedRouteElement 
+                component={Profile}
+                isLoggedIn={isLoggedIn}
                 handleSignOut={handleSignOut}
               />
               </>
             }
           />
           <Route path='/signin'
+            // {isLoggedIn ? <Navigate to='/movies'/> : ''}
             element={<Login 
             onAuth={handleAuth}
           />}
           />
           <Route path='/signup'
+            
             element={<Register
             onRegister={handleRegister}
           />}

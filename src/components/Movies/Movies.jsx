@@ -2,7 +2,7 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-function Movies({ isLoggedIn }) {
+function Movies() {
   return (
     <main className='movies'>
       <SearchForm />
