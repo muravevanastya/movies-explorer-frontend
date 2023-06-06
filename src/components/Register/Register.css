@@ -27,6 +27,9 @@
 
 .register__form {
   margin-top: 40px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
 }
 
 .register__fieldset {
@@ -55,6 +58,14 @@
   padding: 15px 0 15px 15px;
 }
 
+.register__input-error {
+  color: #ff0000;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  max-width: 395px;
+}
+
 .register__button {
   font-family: 'Inter';
   font-style: normal;
@@ -71,7 +82,11 @@
   cursor: pointer;
 }
 
-.register__button:hover {
+.register__button-disabled[disabled] {
+  opacity: 0.5;
+}
+
+.register__button:not([disabled]):hover{
   opacity: 0.8;
   transition: .2s ease-in-out;
 }
