@@ -54,6 +54,10 @@
   padding: 15px 0 15px 15px;
 }
 
+.register__input-item-error {
+  color: #FF3055;
+}
+
 .register__input-error {
   font-weight: 400;
   font-size: 10px;

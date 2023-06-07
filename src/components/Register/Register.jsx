@@ -26,7 +26,7 @@ function Register({ onRegister }) {
             <div className='register__input'>
               <p className='register__input-name'>Имя</p>
               <input 
-                className='register__input-item' 
+                className={errors.name ? 'register__input-item register__input-item-error' : 'register__input-item'}
                 type='text'
                 name='name'
                 id='name'
@@ -41,7 +41,7 @@ function Register({ onRegister }) {
             <div className='register__input'>
               <p className='register__input-name'>E-mail</p>
               <input 
-                className='register__input-item' 
+                className={errors.email ? 'register__input-item register__input-item-error' : 'register__input-item'}
                 type='email' 
                 name='email'
                 id='email'
@@ -56,7 +56,7 @@ function Register({ onRegister }) {
             </div>
             <div className='register__input'>
               <p className='register__input-name'>Пароль</p>
-              <input className='register__input-item' 
+              <input className={errors.password ? 'register__input-item register__input-item-error' : 'register__input-item'}
                 type='password'
                 name='password'
                 id='password'
