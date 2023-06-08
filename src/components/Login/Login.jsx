@@ -2,23 +2,22 @@ import React from 'react';
 import './Login.css';
 import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
+import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
 function Login({ onAuth }) {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-
-  function handleEmailChange(evt) {
-    setEmail(evt.target.value)
-  }
-
-  function handlePasswordChange(evt) {
-    setPassword(evt.target.value)
-  }
+  // const [error, setError] = React.useState(false);
+  const { values, errors, isValid, handleChange } = useFormWithValidation();
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAuth(password, email)
+
+    const { password, email } = values;
+    onAuth({ password, email });
   }
+
+  // React.useEffect(() => {
+  //   setError(error);
+  // }, [error])
 
   return (
   <main className='login'>
@@ -27,35 +26,40 @@ function Login({ onAuth }) {
         <img className="login__logo" src={logo} alt="Логотип" />
       </Link>
       <h2 className='login__title'>Рады видеть!</h2>
-      <form className='login__form' onSubmit={handleSubmit}>
+      <form className='login__form'>
         <fieldset className='login__fieldset'>
           <div className='login__input'>
             <p className='login__input-name'>E-mail</p>
             <input 
-              className='login__input-item' 
+              className={errors.email ? 'login__input-item login__input-item-error' : 'login__input-item'}
               type='email'
               name='email'
               minLength='6'
               maxLength='64'
-              onChange={handleEmailChange}
-              value={email || ''}
+              onChange={handleChange}
+              value={values.email || ''}
+              pattern='[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}'
               required
             />
+            <span className='login__input-error'>{errors.email}</span>
           </div>
           <div className='login__input'>
             <p className='login__input-name'>Пароль</p>
             <input 
-              className='login__input-item' 
+              className={errors.password ? 'login__input-item login__input-item-error' : 'login__input-item'}
               type='password' 
               name='password'
               minLength='8'
-              onChange={handlePasswordChange}
-              value={password || ''}
+              onChange={handleChange}
+              value={values.password || ''}
               required
             />
+            <span className='login__input-error'>{errors.password}</span>
           </div>
         </fieldset>
-        <button className='login__button' type='submit'>Войти</button>
+        {/* {error && <div className='login__input-error'>{error}</div>} */}
+        {/* <div className='login__input-error'>{error}</div> */}
+        <button className={`login__button ${!isValid && 'login__button-disabled'}`} disabled={!isValid} type='submit' onClick={handleSubmit} >Войти</button>
       </form>
       <p className='login__signup'>Ещё не зарегистрированы? <Link className='login__signup-link' to='/signup'>Регистрация</Link></p>
     </div>

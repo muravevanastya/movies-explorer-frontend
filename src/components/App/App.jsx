@@ -21,8 +21,7 @@ function App() {
   const [email, setEmail] = React.useState('')
   // const [signupSuccess, setSignupSuccess] = React.useState(false)
   const [currentUser, setCurrentUser] = React.useState({})
-
-
+  // const [error, setError] = React.useState('')
 
   function checkToken() {
     const jwt = localStorage.getItem('jwt');
@@ -69,6 +68,7 @@ function App() {
           })
           .catch((err) => {
             console.log(err)
+            // setError('Что-то пошло не так: ' + err.message)
           })
       })
   }
@@ -132,6 +132,7 @@ function App() {
           <Route path='/signin'
             element={<Login 
             onAuth={handleAuth}
+            // error={error}
           />}
           />
           <Route path='/signup'
