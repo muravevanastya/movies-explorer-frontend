@@ -23,6 +23,9 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({})
   const [loginError, setLoginError] = React.useState(false);
   const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
+  const [registrationError, setRegistrationError] = React.useState(false);
+  const [registrationErrorMessage, setRegistrationErrorMessage] = React.useState('');
+
 
   function checkToken() {
     const jwt = localStorage.getItem('jwt');
@@ -46,15 +49,14 @@ function App() {
 
   function handleRegister({ password, email, name }) {
     auth.register({ password, email, name })
-      .then((res) => {
-        // setSignupSuccess(true);
+      .then(() => {
         navigate('/signin', { replace: true })
       })
       .catch((err) => {
         console.log(err);
-        // setSignupSuccess(false);
+        setRegistrationError(true);
+        setRegistrationErrorMessage('Не удалось зарегистрироваться')
       })
-      // .finally(() => )
   }
 
   function handleAuth(password, email) {
@@ -65,7 +67,7 @@ function App() {
             setCurrentUser(res);
             setIsLoggedIn(true);
             setEmail(res.email);
-            navigate('/');
+            navigate('/', { replace: true });
           })
       })
       .catch((err) => {
@@ -80,7 +82,7 @@ function App() {
     setEmail('');
     setIsLoggedIn(false);
     setLoginErrorMessage('');
-    // setCurrentUser({});
+    setCurrentUser({});
   }
 
   return (
@@ -137,13 +139,14 @@ function App() {
             onAuth={handleAuth}
             loginError={loginError}
             loginErrorMessage={loginErrorMessage}
-            // error={error}
           />}
           />
           <Route path='/signup'
             
             element={<Register
             onRegister={handleRegister}
+            registrationError={registrationError}
+            registrationErrorMessage={registrationErrorMessage}
           />}
           />
           <Route path='*'

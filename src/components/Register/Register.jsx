@@ -4,7 +4,7 @@ import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
-function Register({ onRegister }) {
+function Register({ onRegister, registrationError, registrationErrorMessage }) {
   const { values, errors, isValid, handleChange } = useFormWithValidation();
 
   function handleSubmit(evt) {
@@ -68,6 +68,7 @@ function Register({ onRegister }) {
               <span className='register__input-error'>{errors.password}</span>
             </div>
           </fieldset>
+          <span className={`register__error-message ${registrationError ? 'register__error-message-active' : null}`}>{registrationErrorMessage}</span>
           <button className={`register__button ${!isValid && 'register__button-disabled'}`} disabled={!isValid} type='submit' onClick={handleSubmit}>Зарегистрироваться</button>
         </form>
         <p className='register__signin'>Уже зарегистрированы? <Link className='register__signin-link' to='/signin'>Войти</Link></p>
