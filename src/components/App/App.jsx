@@ -59,7 +59,7 @@ function App() {
       })
   }
 
-  function handleAuth(password, email) {
+  function handleAuth({ password, email }) {
     auth.authorize(password, email)
       .then(() => {
         api.getUserInfo()
@@ -67,7 +67,7 @@ function App() {
             setCurrentUser(res);
             setIsLoggedIn(true);
             setEmail(res.email);
-            navigate('/', { replace: true });
+            navigate('/movies', { replace: true });
           })
       })
       .catch((err) => {
