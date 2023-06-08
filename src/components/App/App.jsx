@@ -21,7 +21,8 @@ function App() {
   const [email, setEmail] = React.useState('')
   // const [signupSuccess, setSignupSuccess] = React.useState(false)
   const [currentUser, setCurrentUser] = React.useState({})
-  // const [error, setError] = React.useState('')
+  const [loginError, setLoginError] = React.useState(false);
+  const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
 
   function checkToken() {
     const jwt = localStorage.getItem('jwt');
@@ -61,22 +62,24 @@ function App() {
       .then(() => {
         api.getUserInfo()
           .then((res) => {
-            setCurrentUser(res.user)
-            setIsLoggedIn(true)
-            setEmail(res.email)
-            navigate('/movies', { replace: true })
-          })
-          .catch((err) => {
-            console.log(err)
-            // setError('Что-то пошло не так: ' + err.message)
+            setCurrentUser(res);
+            setIsLoggedIn(true);
+            setEmail(res.email);
+            navigate('/');
           })
       })
+      .catch((err) => {
+        setLoginError(true);
+        setLoginErrorMessage('Не удалось войти. Пожалуйста, проверьте данные');
+        console.log(err);
+      });
   }
 
   function handleSignOut() {
     localStorage.removeItem('jwt');
     setEmail('');
     setIsLoggedIn(false);
+    setLoginErrorMessage('');
     // setCurrentUser({});
   }
 
@@ -132,6 +135,8 @@ function App() {
           <Route path='/signin'
             element={<Login 
             onAuth={handleAuth}
+            loginError={loginError}
+            loginErrorMessage={loginErrorMessage}
             // error={error}
           />}
           />

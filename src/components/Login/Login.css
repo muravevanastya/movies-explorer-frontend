@@ -66,6 +66,20 @@
   color: #FF3055;
 }
 
+.login__error-message {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 13px;
+  color: #FF3055;
+  display: none;
+  max-width: 396px;
+  margin-top: 26px;
+}
+
+.login__error-message-active {
+  display: flex;
+}
+
 .login__button {
   font-family: 'Inter';
   font-style: normal;
@@ -134,6 +148,10 @@
 
   .login__input {
     width: 260px;
+  }
+
+  .login__error-message {
+    max-width: 260px;
   }
 
   .login__button {

@@ -4,20 +4,15 @@ import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
-function Login({ onAuth }) {
-  // const [error, setError] = React.useState(false);
+function Login({ onAuth, loginError, loginErrorMessage }) {
   const { values, errors, isValid, handleChange } = useFormWithValidation();
 
   function handleSubmit(evt) {
     evt.preventDefault();
 
     const { password, email } = values;
-    onAuth({ password, email });
+    onAuth({ password, email })
   }
-
-  // React.useEffect(() => {
-  //   setError(error);
-  // }, [error])
 
   return (
   <main className='login'>
@@ -57,8 +52,7 @@ function Login({ onAuth }) {
             <span className='login__input-error'>{errors.password}</span>
           </div>
         </fieldset>
-        {/* {error && <div className='login__input-error'>{error}</div>} */}
-        {/* <div className='login__input-error'>{error}</div> */}
+        <span className={`login__error-message ${loginError ? 'login__error-message-active' : null}`}>{loginErrorMessage}</span>
         <button className={`login__button ${!isValid && 'login__button-disabled'}`} disabled={!isValid} type='submit' onClick={handleSubmit} >Войти</button>
       </form>
       <p className='login__signup'>Ещё не зарегистрированы? <Link className='login__signup-link' to='/signup'>Регистрация</Link></p>
