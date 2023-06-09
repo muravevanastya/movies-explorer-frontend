@@ -13,7 +13,7 @@ export const register = ({ password, email, name }) => {
   .then(handleResponse)
 }
 
-export const authorize = (password, email) => {
+export const authorize = ({ password, email }) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {

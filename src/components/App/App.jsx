@@ -17,15 +17,12 @@ import ProtectedRouteElement from '../ProtectedRouteElement/ProtectedRouteElemen
 function App() {
   const navigate = useNavigate()
 
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false)
-  const [email, setEmail] = React.useState('')
-  // const [signupSuccess, setSignupSuccess] = React.useState(false)
-  const [currentUser, setCurrentUser] = React.useState({})
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
   const [loginError, setLoginError] = React.useState(false);
   const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
   const [registrationError, setRegistrationError] = React.useState(false);
   const [registrationErrorMessage, setRegistrationErrorMessage] = React.useState('');
-
 
   function checkToken() {
     const jwt = localStorage.getItem('jwt');
@@ -35,8 +32,6 @@ function App() {
           if(res) {
             setCurrentUser(res.user)
             setIsLoggedIn(true);
-            setEmail(res.email);
-            // navigate('/', { replace: true })
           }
         })
         .catch(err => console.log(err));
@@ -50,7 +45,7 @@ function App() {
   function handleRegister({ password, email, name }) {
     auth.register({ password, email, name })
       .then(() => {
-        navigate('/signin', { replace: true })
+        handleAuth({password, email})
       })
       .catch((err) => {
         console.log(err);
@@ -60,13 +55,12 @@ function App() {
   }
 
   function handleAuth({ password, email }) {
-    auth.authorize(password, email)
+    auth.authorize({ password, email })
       .then(() => {
         api.getUserInfo()
           .then((res) => {
-            setCurrentUser(res);
+            setCurrentUser(res.user);
             setIsLoggedIn(true);
-            setEmail(res.email);
             navigate('/movies', { replace: true });
           })
       })
@@ -79,7 +73,6 @@ function App() {
 
   function handleSignOut() {
     localStorage.removeItem('jwt');
-    setEmail('');
     setIsLoggedIn(false);
     setLoginErrorMessage('');
     setCurrentUser({});
