@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -16,6 +16,7 @@ import ProtectedRouteElement from '../ProtectedRouteElement/ProtectedRouteElemen
 
 function App() {
   const navigate = useNavigate()
+  const location = useLocation();
 
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
@@ -24,7 +25,12 @@ function App() {
   const [registrationError, setRegistrationError] = React.useState(false);
   const [registrationErrorMessage, setRegistrationErrorMessage] = React.useState('');
 
+  const [editErrorMessage, setEditErrorMessage] = React.useState('');
+  const [editSuccessMessage, setEditSuccessMessage] = React.useState('');
+  const [isEditProfileSuccessful, setIsEditProfileSuccessful] = React.useState(false);
+
   function checkToken() {
+    const path = location.pathname;
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth.checkToken(jwt)
@@ -32,6 +38,7 @@ function App() {
           if(res) {
             setCurrentUser(res.user)
             setIsLoggedIn(true);
+            navigate(path, { replace: true })
           }
         })
         .catch(err => console.log(err));
@@ -76,6 +83,24 @@ function App() {
     setIsLoggedIn(false);
     setLoginErrorMessage('');
     setCurrentUser({});
+  }
+
+  function handleEditUser(userData) {
+    api.setUserInfoApi(userData.name, userData.email)
+      .then((data) => {
+        setIsEditProfileSuccessful(true);
+        setCurrentUser({
+          ...currentUser,
+          name: data.user.name,
+          email: data.user.email,
+        })
+        setEditSuccessMessage('Данные успешно отредактированы')
+      })
+      .catch((err) => {
+        setIsEditProfileSuccessful(false);
+        setEditErrorMessage('Что-то пошло не так... Пожалуйста, проверьте данные');
+        console.log(err);
+      })
   }
 
   return (
@@ -123,6 +148,10 @@ function App() {
                 component={Profile}
                 isLoggedIn={isLoggedIn}
                 handleSignOut={handleSignOut}
+                onEdit={handleEditUser}
+                editErrorMessage={editErrorMessage}
+                editSuccessMessage={editSuccessMessage}
+                isEditProfileSuccessful={isEditProfileSuccessful}
               />
               </>
             }
