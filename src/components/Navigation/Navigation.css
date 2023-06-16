@@ -41,7 +41,7 @@
 }
 
 .navigation__list-item-films {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 18px;
   color: #000000;
@@ -49,13 +49,8 @@
   margin-right: 20px;
 }
 
-.navigation__list-item-saved-films {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
-  color: #000000;
-  text-decoration: none;
-  margin-right: 50px;
+.navigation__list-item-films.active {
+  font-weight: 500;
 }
 
 .navigation__list-item-account {
@@ -65,6 +60,7 @@
   align-items: center;
   border: 2px solid rgba(0, 0, 0, 0.08);
   border-radius: 50px;
+  margin-left: 50px;
 }
 
 .navigation__list-item-account-img {

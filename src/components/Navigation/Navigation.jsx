@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Navigation.css';
 import accountIcon from '../../images/account-icon.svg'
 
@@ -9,23 +9,23 @@ function Navigation({ isLoggedIn }) {
       {!isLoggedIn ? (
         <ul className='navigation__list'>
           <li className='navigation__list-item'>
-            <Link to='/signup' className='navigation__list-item-signup'>Регистрация</Link>
+            <NavLink to='/signup' className='navigation__list-item-signup'>Регистрация</NavLink>
           </li>
           <li className='navigation__list-item'>
-            <Link to='/signin' className='navigation__list-item-signin'>Войти</Link>
+            <NavLink to='/signin' className='navigation__list-item-signin'>Войти</NavLink>
           </li>
         </ul>
       ) : (
       <ul className='navigation__list navigation__list-hidden'>
         <li className='navigation__list-item'>
-          <Link to='/movies' className='navigation__list-item-films'>Фильмы</Link>
+          <NavLink to='/movies' className='navigation__list-item-films'>Фильмы</NavLink>
         </li>
         <li className='navigation__list-item'>
-          <Link to='/saved-movies' className='navigation__list-item-saved-films'>Сохранённые фильмы</Link>
+          <NavLink to='/saved-movies' className='navigation__list-item-films'>Сохранённые фильмы</NavLink>
         </li>
         <li className='navigation__list-item-account'>
           <img className='navigation__list-item-account-img' src={accountIcon} alt='Иконка человека' />
-          <Link to='/profile' className='navigation__list-item-account-text'>Аккаунт</Link>
+          <NavLink to='/profile' className='navigation__list-item-account-text'>Аккаунт</NavLink>
         </li>
       </ul>
       )}

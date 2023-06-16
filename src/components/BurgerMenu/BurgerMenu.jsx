@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './BurgerMenu.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import accountIcon from '../../images/account-icon.svg';
 import closeButton from '../../images/close-btn.svg';
 
@@ -8,7 +8,7 @@ function BurgerMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuOpen = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(true);
   };
 
   const handleMenuClose = () => {
@@ -23,17 +23,17 @@ function BurgerMenu() {
         <nav className='burger-menu__navigation'>
           <ul className='burger-menu__list'>
             <li className='burger-menu__list-item'>
-              <Link to='/' className='burger-menu__list-item-text'>Главная</Link>
+              <NavLink to='/' className='burger-menu__list-item-text' onClick={handleMenuClose}>Главная</NavLink>
             </li>
               <li className='burger-menu__list-item'>
-                <Link to='/movies' className='burger-menu__list-item-text'>Фильмы</Link>
+                <NavLink to='/movies' className='burger-menu__list-item-text' onClick={handleMenuClose}>Фильмы</NavLink>
               </li>
               <li className='burger-menu__list-item'>
-                <Link to='/saved-movies' className='burger-menu__list-item-text'>Сохранённые фильмы</Link>
+                <NavLink to='/saved-movies' className='burger-menu__list-item-text' onClick={handleMenuClose}>Сохранённые фильмы</NavLink>
               </li>
               <li className='burger-menu__list-item-account'>
                 <img className='burger-menu__list-item-account-img' src={accountIcon} alt='Иконка человека' />
-                <Link to='/profile' className='burger-menu__list-item-account-text'>Аккаунт</Link>
+                <NavLink to='/profile' className='burger-menu__list-item-account-text' onClick={handleMenuClose}>Аккаунт</NavLink>
               </li>
             </ul>
         </nav>

@@ -78,10 +78,11 @@
   line-height: 22px;
   text-decoration: none;
   color: #000000;
+  padding-bottom: 4px;
 }
 
-.burger-menu__list-item-text-active {
-  border-bottom: 1px solid black;
+.burger-menu__list-item-text.active {
+  border-bottom: 2px solid black;
 }
 
 .burger-menu__list-item-account {
