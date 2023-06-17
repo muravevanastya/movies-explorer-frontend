@@ -31,6 +31,9 @@ function App() {
   const [isEditProfileSuccessful, setIsEditProfileSuccessful] = React.useState(false);
 
   const [allMovies, setAllMovies] = React.useState([]);
+  const [filteredMovies, setFilteredMovies] = React.useState([]);
+
+  // const [query, setQuery] = React.useState('');
 
   function checkToken() {
     const path = location.pathname;
@@ -121,6 +124,8 @@ function App() {
     const allMoviesArr = JSON.parse(localStorage.getItem('allMovies'));
     if (allMoviesArr) {
       setAllMovies(allMoviesArr);
+    } else {
+      getAllMovies();
     }
   }, [])
 
@@ -128,6 +133,29 @@ function App() {
     getAllMovies();
   }, [])
 
+  function searchFilter(data, searchQuery) {
+    if (searchQuery) {
+      return data.filter((item) => item.nameRU.toLowerCase().includes(searchQuery.toLowerCase()))
+    }
+    return [];
+  };
+
+  function handleSearch(searchQuery) {
+    setTimeout(() => {
+      // setQuery(searchQuery);
+      const filtered = searchFilter(allMovies, searchQuery);
+      setFilteredMovies(filtered);
+      localStorage.setItem('filteredMovies', JSON.stringify(filtered));
+    }, 600);
+  }
+
+  React.useEffect(() => {
+    const storedResults = JSON.parse(localStorage.getItem('filteredMovies'));
+    if (storedResults) {
+      setFilteredMovies(storedResults);
+    }
+  }, []);
+  
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -148,7 +176,8 @@ function App() {
               <ProtectedRouteElement 
                 component={Movies}
                 isLoggedIn={isLoggedIn}
-                movies={allMovies}
+                movies={filteredMovies}
+                onSubmitSearch={handleSearch}
               />
               <Footer />
               </>
