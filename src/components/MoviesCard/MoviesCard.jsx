@@ -23,7 +23,9 @@ function MoviesCard({movie}) {
         </div>
         <button className='movie__save'></button>
       </div>
-      <img className='movie__photo' src={'https://api.nomoreparties.co/' + movie.image.url} alt={`Картинка фильма ${movie.nameRU}`} />
+      <a className='movie__link' href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
+        <img className='movie__photo' src={'https://api.nomoreparties.co/' + movie.image.url} alt={`Картинка фильма ${movie.nameRU}`} />
+      </a>
     </div>
   )
 }
