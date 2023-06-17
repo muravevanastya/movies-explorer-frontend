@@ -1,9 +1,9 @@
 import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
-// import { movies } from "../utils/test-database";
 import './MoviesCardList.css'
+import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList({ movies }) {
+function MoviesCardList({ movies, preloader, setPreloader }) {
   const [moviesToShow, setMoviesToShow] = React.useState([]);
   const [numberOfMovies, setNumberOfMovies] = React.useState(0);
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -27,8 +27,11 @@ function MoviesCardList({ movies }) {
   }, [width])
 
   function showMoreMovies() {
+    setPreloader(true);
+
     setTimeout(() => {
       width > 540 ? setNumberOfMovies(numberOfMovies + 7) : setNumberOfMovies(numberOfMovies + 5);
+      setPreloader(false);
     }, 1000)
   }
 
@@ -41,7 +44,8 @@ function MoviesCardList({ movies }) {
           )
         })
       }
-      <button className='movies-cards__more-button' type='button' onClick={showMoreMovies}>Ещё</button>
+      {preloader && (<Preloader />)}
+      <button className={`movies-cards__more-button ${preloader ? 'movies-cards__more-button-hidden' : ''}`} type='button' onClick={showMoreMovies}>Ещё</button>
     </div>
   )
 }
