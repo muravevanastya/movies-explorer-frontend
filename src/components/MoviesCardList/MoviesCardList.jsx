@@ -1,13 +1,19 @@
 import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import { movies } from "../utils/test-database";
+// import { movies } from "../utils/test-database";
 import './MoviesCardList.css'
 
-function MoviesCardList() {
+function MoviesCardList({ movies }) {
+  const [moviesToShow, setMoviesToShow] = React.useState([]);
+
+  React.useEffect(() => {
+    setMoviesToShow(movies);
+  }, [movies]);  
+
   return (
     <div className="movies-cards__container">
       {
-        movies.map((movie) => {
+        moviesToShow && moviesToShow.map((movie) => {
           return (
             <MoviesCard key={movie.id} movie={movie} />
           )

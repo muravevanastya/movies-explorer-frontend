@@ -13,6 +13,7 @@ import { api } from '../../utils/MainApi';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import ProtectedRouteElement from '../ProtectedRouteElement/ProtectedRouteElement';
+import { moviesApi } from '../../utils/MoviesApi';
 
 function App() {
   const navigate = useNavigate()
@@ -28,6 +29,8 @@ function App() {
   const [editErrorMessage, setEditErrorMessage] = React.useState('');
   const [editSuccessMessage, setEditSuccessMessage] = React.useState('');
   const [isEditProfileSuccessful, setIsEditProfileSuccessful] = React.useState(false);
+
+  const [allMovies, setAllMovies] = React.useState([]);
 
   function checkToken() {
     const path = location.pathname;
@@ -103,6 +106,28 @@ function App() {
       })
   }
 
+  function getAllMovies() {
+    moviesApi.getMovies()
+      .then((allMoviesData) => {
+        localStorage.setItem('allMovies', JSON.stringify(allMoviesData));
+        setAllMovies(allMoviesData);
+      })
+      .catch(() => {
+        localStorage.removeItem('allMovies');
+      })
+  }
+
+  React.useEffect(() => {
+    const allMoviesArr = JSON.parse(localStorage.getItem('allMovies'));
+    if (allMoviesArr) {
+      setAllMovies(allMoviesArr);
+    }
+  }, [])
+
+  React.useEffect(() => {
+    getAllMovies();
+  }, [])
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -123,6 +148,7 @@ function App() {
               <ProtectedRouteElement 
                 component={Movies}
                 isLoggedIn={isLoggedIn}
+                movies={allMovies}
               />
               <Footer />
               </>

@@ -2,12 +2,12 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-function Movies() {
+function Movies({movies}) {
   return (
     <main className='movies'>
       <SearchForm />
       <section className='movies-cards'>
-        <MoviesCardList />
+        <MoviesCardList movies={movies} />
       </section>
     </main>
   )

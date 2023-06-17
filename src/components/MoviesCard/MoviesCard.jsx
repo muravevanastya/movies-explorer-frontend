@@ -1,17 +1,17 @@
 import './MoviesCard.css';
-import moviePhoto from '../../images/movie-photo.jpg';
 
-function MoviesCard(props) {
+function MoviesCard({movie}) {
+  
   return (
     <div className='movie'>
       <div className='movie__description'>
         <div className='movie__info'>
-          <p className='movie__name'>{props.movie.name}</p>
+          <p className='movie__name'>{movie.nameRU}</p>
           <p className='movie__duration'>1ч 42м</p>
         </div>
         <button className='movie__save'></button>
       </div>
-      <img className='movie__photo' src={moviePhoto} alt="Картинка фильма" />
+      <img className='movie__photo' src={'https://api.nomoreparties.co/' + movie.image.url} alt={`Картинка фильма ${movie.nameRU}`} />
     </div>
   )
 }
