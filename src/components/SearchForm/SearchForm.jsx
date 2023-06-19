@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
-function SearchForm({ onSearch }) {
+function SearchForm({ onSearch, onFilterClick, filterIsOn }) {
   const [searchQuery, setSearchQuery] = React.useState('');
 
   function handleChange(evt) {
@@ -21,7 +21,6 @@ function SearchForm({ onSearch }) {
       setSearchQuery(storedSearchQuery);
     }
   }, []);
-  
 
   return (
     <form className='movies__search-form' onSubmit={handleSubmit}>
@@ -39,7 +38,7 @@ function SearchForm({ onSearch }) {
         </div>
         <button className='search-form__button'>Найти</button>
       </div>
-      <FilterCheckbox />
+      <FilterCheckbox onFilterClick={onFilterClick} filterIsOn={filterIsOn} />
     </form>
   )
 }
