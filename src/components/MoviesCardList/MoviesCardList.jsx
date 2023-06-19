@@ -49,7 +49,9 @@ function MoviesCardList({ movies, preloader, setPreloader }) {
         )
       }
       {preloader && <Preloader />}
-      <button className={`movies-cards__more-button ${preloader ? 'movies-cards__more-button-hidden' : ''}`} type='button' onClick={showMoreMovies}>Ещё</button>
+      {moviesToShow.length > numberOfMovies && (
+        <button className={`movies-cards__more-button ${preloader ? 'movies-cards__more-button-hidden' : ''}`} type='button' onClick={showMoreMovies}>Ещё</button>
+      )}
     </div>
   )
 }
