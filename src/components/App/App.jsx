@@ -33,6 +33,11 @@ function App() {
   const [allMovies, setAllMovies] = React.useState([]);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
 
+  const [preloader, setPreloader] = React.useState(false);
+
+
+  // const [query, setQuery] = React.useState('');
+
   function checkToken() {
     const path = location.pathname;
     const jwt = localStorage.getItem('jwt');
@@ -139,11 +144,13 @@ function App() {
   };
 
   function handleSearch(searchQuery) {
+    setPreloader(true);
     setTimeout(() => {
       // setQuery(searchQuery);
       const filtered = searchFilter(allMovies, searchQuery);
       setFilteredMovies(filtered);
       localStorage.setItem('filteredMovies', JSON.stringify(filtered));
+      setPreloader(false);
     }, 600);
   }
 
@@ -176,6 +183,8 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 movies={filteredMovies}
                 onSubmitSearch={handleSearch}
+                preloader={preloader}
+                setPreloader={setPreloader}
               />
               <Footer />
               </>
