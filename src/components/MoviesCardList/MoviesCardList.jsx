@@ -38,13 +38,17 @@ function MoviesCardList({ movies, preloader, setPreloader }) {
   return (
     <div className="movies-cards__container">
       {
-        moviesToShow && moviesToShow?.slice(0, numberOfMovies).map((movie) => {
-          return (
-            <MoviesCard key={movie.id} movie={movie} />
-          )
-        })
+        moviesToShow.length > 0 ? (
+          moviesToShow?.slice(0, numberOfMovies).map((movie) => {
+            return (
+              <MoviesCard key={movie.id} movie={movie} />
+            )
+          })
+        ) : (
+          !preloader && <p className='movies-cards__not-found'>Ничего не найдено</p>
+        )
       }
-      {preloader && (<Preloader />)}
+      {preloader && <Preloader />}
       <button className={`movies-cards__more-button ${preloader ? 'movies-cards__more-button-hidden' : ''}`} type='button' onClick={showMoreMovies}>Ещё</button>
     </div>
   )

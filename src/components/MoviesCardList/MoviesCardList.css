@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+.movies-cards__not-found {
+  color: #FF3055;
+}
+
 .movies-cards__more-button-hidden {
   display: none;
 }
