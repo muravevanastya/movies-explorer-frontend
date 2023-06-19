@@ -4,6 +4,7 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm({ onSearch, onFilterClick, filterIsOn }) {
   const [searchQuery, setSearchQuery] = React.useState('');
+  const [error, setError] = React.useState('');
 
   function handleChange(evt) {
     setSearchQuery(evt.target.value);
@@ -11,8 +12,16 @@ function SearchForm({ onSearch, onFilterClick, filterIsOn }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onSearch(searchQuery);
-    localStorage.setItem('searchQuery', searchQuery);
+
+    if (!searchQuery) {
+      setError('Нужно ввести ключевое слово');
+      setTimeout(() => {
+        setError('');
+      }, 5000);
+    } else {
+      onSearch(searchQuery);
+      localStorage.setItem('searchQuery', searchQuery);
+    }
   };
 
   React.useEffect(() => {
@@ -23,7 +32,7 @@ function SearchForm({ onSearch, onFilterClick, filterIsOn }) {
   }, []);
 
   return (
-    <form className='movies__search-form' onSubmit={handleSubmit}>
+    <form className='movies__search-form'>
       <div className='search-form__container'>
         <div className='search-form__input-container'>
           <div className='search-form__icon'></div>
@@ -36,7 +45,8 @@ function SearchForm({ onSearch, onFilterClick, filterIsOn }) {
             required
           />
         </div>
-        <button className='search-form__button'>Найти</button>
+        {error && <p className="search-form__error">{error}</p>}
+        <button className='search-form__button' onClick={handleSubmit}>Найти</button>
       </div>
       <FilterCheckbox onFilterClick={onFilterClick} filterIsOn={filterIsOn} />
     </form>

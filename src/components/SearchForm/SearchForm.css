@@ -8,6 +8,7 @@
 }
 
 .search-form__container {
+  position: relative;
   background: #F9F9F9;
   width: 100%;
   display: flex;
@@ -69,6 +70,16 @@
   transition: .2s ease-in-out;
 }
 
+.search-form__error {
+  color: #FF3055;
+  position: absolute;
+  bottom: -34px;
+  left: 22px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
 @media screen and (max-width: 769px) {
   .movies__search-form {
     width: 92%;
@@ -92,13 +103,15 @@
   }
 
   .search-form__input {
-    font-weight: 400;
     font-size: 14px;
-    line-height: 20px;
     padding: 23px 3px;
   }
 
   .search-form__button {
     margin-right: 17px;
+  }
+
+  .search-form__error {
+    font-size: 14px;
   }
 }
