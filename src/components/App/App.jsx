@@ -33,8 +33,6 @@ function App() {
   const [allMovies, setAllMovies] = React.useState([]);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
 
-  // const [query, setQuery] = React.useState('');
-
   function checkToken() {
     const path = location.pathname;
     const jwt = localStorage.getItem('jwt');
