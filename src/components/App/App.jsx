@@ -32,6 +32,7 @@ function App() {
 
   const [allMovies, setAllMovies] = React.useState([]);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
+  const [savedMovies, setSavedMovies] = React.useState([]);
 
   const [preloader, setPreloader] = React.useState(false);
 
@@ -123,26 +124,6 @@ function App() {
       })
   }
 
-  React.useEffect(() => {
-    const allMoviesArr = JSON.parse(localStorage.getItem('allMovies'));
-    if (allMoviesArr) {
-      setAllMovies(allMoviesArr);
-    } else {
-      getAllMovies();
-    }
-  }, [])
-
-  React.useEffect(() => {
-    getAllMovies();
-  }, [])
-
-  function searchFilter(data, searchQuery) {
-    if (searchQuery) {
-      return data.filter((item) => item.nameRU.toLowerCase().includes(searchQuery.toLowerCase()))
-    }
-    return [];
-  };
-
   function handleSearch(searchQuery) {
     setPreloader(true);
     setTimeout(() => {
@@ -154,12 +135,84 @@ function App() {
     }, 600);
   }
 
+    function searchFilter(data, searchQuery) {
+    if (searchQuery) {
+      return data.filter((item) => item.nameRU.toLowerCase().includes(searchQuery.toLowerCase()))
+    }
+    return [];
+  };
+
   React.useEffect(() => {
     const storedResults = JSON.parse(localStorage.getItem('filteredMovies'));
     if (storedResults) {
       setFilteredMovies(storedResults);
     }
-  }, []);
+  }, [])
+
+  function getSavedMovies() {
+    api.getSavedMovies()
+      .then((data) => {
+        const savedArray = data.map((item) => ({ ...item, id: item.movieId }));
+        // localStorage.setItem('savedMovies', JSON.stringify(savedArray));
+        setSavedMovies(savedArray);
+      })
+      .catch(() => {
+        localStorage.removeItem('savedMovies');
+      })
+  }
+
+  React.useEffect(() => {
+    const allMoviesArr = JSON.parse(localStorage.getItem('allMovies'));
+    if (allMoviesArr) {
+      setAllMovies(allMoviesArr);
+    } else {
+      getAllMovies();
+    }
+
+    const savedMoviesArr = JSON.parse(localStorage.getItem('savedMovies'));
+    if (savedMoviesArr) {
+      setSavedMovies(savedMoviesArr);
+    } else {
+      getSavedMovies();
+    }
+  }, [])
+
+  React.useEffect(() => {
+    if (isLoggedIn) {
+      getAllMovies();
+      getSavedMovies();
+    }
+  }, [isLoggedIn])
+
+  function saveMovie(movie) {
+    api.saveMovie(
+      movie.country,
+      movie.director,
+      movie.duration,
+      movie.year,
+      movie.description,
+      movie.image,
+      movie.trailerLink,
+      movie.nameRU,
+      movie.nameEN,
+      movie.id
+    )
+      .then((res) => {
+        setSavedMovies([...savedMovies, { ...res, id: res.movieId }]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const isMovieAdded = (movie) => savedMovies.some((item) => item.id === movie.id);
+  
+  const saveHandler = (movie, isAdded) => (isAdded ? saveMovie(movie) : '');
+
+  
+  React.useEffect(() => {
+    localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+  }, [savedMovies])
   
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -185,6 +238,9 @@ function App() {
                 onSubmitSearch={handleSearch}
                 preloader={preloader}
                 setPreloader={setPreloader}
+                isMovieAdded={isMovieAdded}
+                savedMovies={false}
+                onSaveClick={saveHandler}
               />
               <Footer />
               </>
@@ -197,6 +253,10 @@ function App() {
               <ProtectedRouteElement 
                 component={SavedMovies}
                 isLoggedIn={isLoggedIn}
+                isMovieAdded={isMovieAdded}
+                movies={savedMovies}
+                savedMovies
+                onSaveClick={saveHandler}
               />
               <Footer />
               </>

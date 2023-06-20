@@ -36,6 +36,55 @@ class Api {
     })
     .then(this._checkResponse)
   }
+
+  getSavedMovies() {
+    return fetch(this._baseUrl + '/movies', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      }
+    })
+      .then(this._checkResponse)
+  }
+
+  saveMovie(    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    id,
+  ) {
+    // const imageUrl = image && image.url ? 'https://api.nomoreparties.co/' + image.url : '';
+    // const thumbnailUrl = image && image.formats && image.formats.thumbnail && image.formats.thumbnail.url
+    //   ? 'https://api.nomoreparties.co/' + image.formats.thumbnail.url
+    //   : '';
+    return fetch(this._baseUrl + '/movies', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        country: country,
+        director: director,
+        duration: duration,
+        year: year,
+        description: description,
+        image: 'https://api.nomoreparties.co/' + image.url,
+        trailerLink: trailerLink,
+        nameRU: nameRU,
+        nameEN: nameEN,
+        thumbnail: 'https://api.nomoreparties.co/' + image.formats.thumbnail.url,
+        movieId: id,
+      })
+    })
+      .then(this._checkResponse)
+  }
 }
 
 export const api = new Api({

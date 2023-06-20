@@ -3,7 +3,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css'
 import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList({ movies, preloader, setPreloader }) {
+function MoviesCardList({ movies, preloader, setPreloader, savedMovies, isMovieAdded, onSaveClick }) {
   const [moviesToShow, setMoviesToShow] = React.useState([]);
   const [numberOfMovies, setNumberOfMovies] = React.useState(0);
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -41,7 +41,13 @@ function MoviesCardList({ movies, preloader, setPreloader }) {
         moviesToShow.length > 0 ? (
           moviesToShow?.slice(0, numberOfMovies).map((movie) => {
             return (
-              <MoviesCard key={movie.id} movie={movie} />
+              <MoviesCard 
+                key={movie.id} 
+                movie={movie}
+                savedMovies={savedMovies}
+                isMovieAdded={isMovieAdded}
+                onSaveClick={onSaveClick}
+              />
             )
           })
         ) : (
