@@ -32,7 +32,7 @@ function MoviesCard({ movie, savedMovies, isMovieAdded, onSaveClick }) {
         <button className={`movie__save ${savedMovies ? 'movie__delete' : 'movie__save'} ${isAdded ? 'movie__save_active' : ''}`} onClick={handleSaveOrDeleteClick} ></button>
       </div>
       <a className='movie__link' href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
-        <img className='movie__photo' src={'https://api.nomoreparties.co/' + movie.image.url} alt={`Картинка фильма ${movie.nameRU}`} />
+        <img className='movie__photo' src={savedMovies ? movie.image : 'https://api.nomoreparties.co/' + movie.image.url} alt={`Картинка фильма ${movie.nameRU}`} />
       </a>
     </div>
   )
