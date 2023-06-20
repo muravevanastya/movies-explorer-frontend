@@ -16,13 +16,12 @@ function MoviesCard({ movie, savedMovies, isMovieAdded, onSaveClick }) {
 
   const isAdded = isMovieAdded(movie);
 
-  function handleSaveClick(evt) {
+  function handleSaveOrDeleteClick(evt) {
     evt.preventDefault();
 
     onSaveClick(movie, !isAdded)
   }
 
-  
   return (
     <div className='movie'>
       <div className='movie__description'>
@@ -30,7 +29,7 @@ function MoviesCard({ movie, savedMovies, isMovieAdded, onSaveClick }) {
           <p className='movie__name'>{movie.nameRU}</p>
           <p className='movie__duration'>{getMoviesDuration()}</p>
         </div>
-        <button className={`movie__save ${isAdded ? 'movie__save_active' : ''}`} onClick={handleSaveClick} ></button>
+        <button className={`movie__save ${savedMovies ? 'movie__delete' : 'movie__save'} ${isAdded ? 'movie__save_active' : ''}`} onClick={handleSaveOrDeleteClick} ></button>
       </div>
       <a className='movie__link' href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
         <img className='movie__photo' src={'https://api.nomoreparties.co/' + movie.image.url} alt={`Картинка фильма ${movie.nameRU}`} />

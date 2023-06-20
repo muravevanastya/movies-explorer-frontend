@@ -184,6 +184,8 @@ function App() {
     }
   }, [isLoggedIn])
 
+  const isMovieAdded = (movie) => savedMovies.some((item) => item.id === movie.id);
+
   function saveMovie(movie) {
     api.saveMovie(
       movie.country,
@@ -205,11 +207,22 @@ function App() {
       });
   }
 
-  const isMovieAdded = (movie) => savedMovies.some((item) => item.id === movie.id);
-  
-  const saveHandler = (movie, isAdded) => (isAdded ? saveMovie(movie) : '');
+  function deleteMovie(movie) {
+    const movieId = savedMovies.find((item) => item.id === movie.id)._id;
+    api.deleteMovie(movieId)
+      .then((res) => {
+        if (res) {
+          const newArray = savedMovies.filter((item) => item.movieId !== res.movieId);
+          setSavedMovies(newArray);
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
-  
+  const saveHandler = (movie, isAdded) => (isAdded ? saveMovie(movie) : deleteMovie(movie));
+
   React.useEffect(() => {
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
   }, [savedMovies])

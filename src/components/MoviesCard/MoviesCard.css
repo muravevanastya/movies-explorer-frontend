@@ -53,6 +53,12 @@
   background-position: center;
 }
 
+.movie__delete {
+  background: url('../../images/heart-delete.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .movie__photo {
   width: 220px;
   height: 122px;
