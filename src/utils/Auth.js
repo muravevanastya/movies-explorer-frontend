@@ -1,4 +1,4 @@
-export const BASE_URL = 'api.moviesearch.nomoredomains.monster';
+export const BASE_URL = 'https://api.moviesearch.nomoredomains.monster';
 
 const handleResponse = response => response.ok ? response.json() : Promise.reject(`Ошибка ${response.status}`);
 
