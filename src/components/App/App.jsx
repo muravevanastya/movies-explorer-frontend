@@ -94,6 +94,15 @@ function App() {
     setIsLoggedIn(false);
     setLoginErrorMessage('');
     setCurrentUser({});
+    localStorage.removeItem('allMovies');
+    localStorage.removeItem('savedMovies');
+    localStorage.removeItem('filteredMovies');
+    localStorage.removeItem('searchQuery');
+    localStorage.removeItem('filterIsOn');
+    localStorage.removeItem('filteredShortMovies');
+    setAllMovies([]);
+    setFilteredMovies([]);
+    setSavedMovies([]);
   }
 
   function handleEditUser(userData) {
