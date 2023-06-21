@@ -55,7 +55,7 @@ function MoviesCardList({ movies, preloader, setPreloader, savedMovies, isMovieA
         )
       }
       {preloader && <Preloader />}
-      {moviesToShow?.length > numberOfMovies && (
+      {savedMovies ? '' : moviesToShow?.length > numberOfMovies && (
         <button className={`movies-cards__more-button ${preloader ? 'movies-cards__more-button-hidden' : ''}`} type='button' onClick={showMoreMovies}>Ещё</button>
       )}
     </div>
