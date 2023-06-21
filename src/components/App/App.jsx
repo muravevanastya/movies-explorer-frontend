@@ -33,10 +33,10 @@ function App() {
   const [allMovies, setAllMovies] = React.useState([]);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
-  const [filterSavedMovies, setFilterSavedMovies] = React.useState([]);
 
   const [preloader, setPreloader] = React.useState(false);
 
+  const [loadingError, setLoadingError] = React.useState('');
 
   const [query, setQuery] = React.useState('');
 
@@ -122,6 +122,7 @@ function App() {
       })
       .catch(() => {
         localStorage.removeItem('allMovies');
+        setLoadingError(true)
       })
   }
 
@@ -159,6 +160,7 @@ function App() {
       })
       .catch(() => {
         localStorage.removeItem('savedMovies');
+        setLoadingError(true)
       })
   }
 
@@ -256,6 +258,7 @@ function App() {
                 isMovieAdded={isMovieAdded}
                 savedMovies={false}
                 onSaveClick={saveHandler}
+                loadingError={loadingError}
               />
               <Footer />
               </>
@@ -272,6 +275,7 @@ function App() {
                 movies={savedMovies}
                 savedMovies={savedMovies}
                 onSaveClick={saveHandler}
+                loadingError={loadingError}
               />
               <Footer />
               </>
