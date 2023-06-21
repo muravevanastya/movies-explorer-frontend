@@ -3,10 +3,11 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css'
 import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList({ movies, preloader, setPreloader, savedMovies, isMovieAdded, onSaveClick }) {
+function MoviesCardList({ movies, preloader, savedMovies, isMovieAdded, onSaveClick }) {
   const [moviesToShow, setMoviesToShow] = React.useState([]);
   const [numberOfMovies, setNumberOfMovies] = React.useState(0);
   const [width, setWidth] = React.useState(window.innerWidth);
+  const [showMorePreloader, setShowMorePreloader] = React.useState(false);
 
   React.useEffect(() => {
     setMoviesToShow(movies);
@@ -27,17 +28,17 @@ function MoviesCardList({ movies, preloader, setPreloader, savedMovies, isMovieA
   }, [width])
 
   function showMoreMovies() {
-    setPreloader(true);
+    setShowMorePreloader(true);
 
     setTimeout(() => {
       width > 540 ? setNumberOfMovies(numberOfMovies + 7) : setNumberOfMovies(numberOfMovies + 5);
-      setPreloader(false);
+      setShowMorePreloader(false)
     }, 1000)
   }
 
   return (
       <div className="movies-cards__container">
-      {
+      {preloader ? <Preloader/> :
         moviesToShow?.length > 0 ? (
           moviesToShow?.slice(0, numberOfMovies).map((movie) => {
             return (
@@ -54,9 +55,9 @@ function MoviesCardList({ movies, preloader, setPreloader, savedMovies, isMovieA
           !preloader && <p className='movies-cards__not-found'>Ничего не найдено</p>
         )
       }
-      {preloader && <Preloader />}
+      {showMorePreloader && <Preloader />}
       {savedMovies ? '' : moviesToShow?.length > numberOfMovies && (
-        <button className={`movies-cards__more-button ${preloader ? 'movies-cards__more-button-hidden' : ''}`} type='button' onClick={showMoreMovies}>Ещё</button>
+        <button className={`movies-cards__more-button ${(preloader || showMorePreloader) ? 'movies-cards__more-button-hidden' : ''}`} type='button' onClick={showMoreMovies}>Ещё</button>
       )}
     </div>
   )

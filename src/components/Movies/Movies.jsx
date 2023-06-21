@@ -22,8 +22,6 @@ function Movies({ movies, onSubmitSearch, preloader, setPreloader, isMovieAdded,
       const filtered = filterShortMovies(movies);
       setFilteredShortMovies(filtered);
       localStorage.setItem('filteredShortMovies', JSON.stringify(filtered));
-    } else {
-      localStorage.setItem('filteredMovies', JSON.stringify(movies));
     }
   }
 
@@ -38,7 +36,7 @@ function Movies({ movies, onSubmitSearch, preloader, setPreloader, isMovieAdded,
     <main className='movies'>
       <SearchForm onSearch={onSubmitSearch} onFilterClick={onFilterClick} filterIsOn={filterIsOn} />
       <section className='movies-cards'>
-        {preloader ? <Preloader/> : (
+        {/* {preloader ? <Preloader/> : ( */}
           <MoviesCardList 
           movies={filterIsOn ? filterShortMovies(movies) : movies} 
           setPreloader={setPreloader}
@@ -47,7 +45,7 @@ function Movies({ movies, onSubmitSearch, preloader, setPreloader, isMovieAdded,
           savedMovies={savedMovies}
           onSaveClick={onSaveClick}
           />
-        )}
+        {/* )} */}
       </section>
     </main>
   )
