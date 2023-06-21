@@ -21,8 +21,10 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
+
   const [loginError, setLoginError] = React.useState(false);
   const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
+
   const [registrationError, setRegistrationError] = React.useState(false);
   const [registrationErrorMessage, setRegistrationErrorMessage] = React.useState('');
 
@@ -37,8 +39,6 @@ function App() {
   const [preloader, setPreloader] = React.useState(false);
 
   const [loadingError, setLoadingError] = React.useState('');
-
-  const [query, setQuery] = React.useState('');
 
   function checkToken() {
     const path = location.pathname;
@@ -154,7 +154,6 @@ function App() {
   function handleSearch(searchQuery) {
     setPreloader(true);
     setTimeout(() => {
-      // setQuery(searchQuery);
       const filtered = searchFilter(allMovies, searchQuery);
       setFilteredMovies(filtered);
       localStorage.setItem('filteredMovies', JSON.stringify(filtered));
@@ -173,7 +172,6 @@ function App() {
     api.getSavedMovies()
       .then((data) => {
         const savedArray = data.map((item) => ({ ...item, id: item.movieId }));
-        // localStorage.setItem('savedMovies', JSON.stringify(savedArray));
         setSavedMovies(savedArray);
       })
       .catch(() => {
@@ -245,7 +243,6 @@ function App() {
   const saveHandler = (movie, isAdded) => (isAdded ? saveMovie(movie) : deleteMovie(movie));
 
   React.useEffect(() => {
-    // setFilterSavedMovies(searchFilter(savedMovies, query));
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
   }, [savedMovies])
   

@@ -60,10 +60,6 @@ class Api {
     nameEN,
     id,
   ) {
-    // const imageUrl = image && image.url ? 'https://api.nomoreparties.co/' + image.url : '';
-    // const thumbnailUrl = image && image.formats && image.formats.thumbnail && image.formats.thumbnail.url
-    //   ? 'https://api.nomoreparties.co/' + image.formats.thumbnail.url
-    //   : '';
     return fetch(this._baseUrl + '/movies', {
       method: 'POST',
       headers: {

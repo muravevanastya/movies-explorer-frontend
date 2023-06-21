@@ -2,10 +2,8 @@ import React from 'react';
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import Preloader from '../Preloader/Preloader';
 
 function Movies({ movies, onSubmitSearch, preloader, setPreloader, isMovieAdded, savedMovies, onSaveClick }) {
-  // const [preloader, setPreloader] = React.useState(false);
   const [filterIsOn, setFilterIsOn] = React.useState(false);
   const [filteredShortMovies, setFilteredShortMovies] = React.useState([]);
 
@@ -36,16 +34,14 @@ function Movies({ movies, onSubmitSearch, preloader, setPreloader, isMovieAdded,
     <main className='movies'>
       <SearchForm onSearch={onSubmitSearch} onFilterClick={onFilterClick} filterIsOn={filterIsOn} />
       <section className='movies-cards'>
-        {/* {preloader ? <Preloader/> : ( */}
-          <MoviesCardList 
-          movies={filterIsOn ? filterShortMovies(movies) : movies} 
-          setPreloader={setPreloader}
-          preloader={preloader}
-          isMovieAdded={isMovieAdded}
-          savedMovies={savedMovies}
-          onSaveClick={onSaveClick}
-          />
-        {/* )} */}
+        <MoviesCardList 
+        movies={filterIsOn ? filterShortMovies(movies) : movies} 
+        setPreloader={setPreloader}
+        preloader={preloader}
+        isMovieAdded={isMovieAdded}
+        savedMovies={savedMovies}
+        onSaveClick={onSaveClick}
+        />
       </section>
     </main>
   )
