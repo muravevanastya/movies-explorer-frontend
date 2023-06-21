@@ -1,8 +1,10 @@
 import React from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import { useLocation } from 'react-router-dom';
 
-function SearchForm({ onSearch, onFilterClick, filterIsOn }) {
+function SearchForm({ onSearch, onFilterClick, filterIsOn, savedMovies }) {
+  const location = useLocation();
   const [searchQuery, setSearchQuery] = React.useState('');
   const [error, setError] = React.useState('');
 
@@ -20,14 +22,19 @@ function SearchForm({ onSearch, onFilterClick, filterIsOn }) {
       }, 5000);
     } else {
       onSearch(searchQuery);
-      localStorage.setItem('searchQuery', searchQuery);
+
+      if(location.pathname !== '/saved-movies') {
+        localStorage.setItem('searchQuery', searchQuery);
+      }
     }
   };
 
   React.useEffect(() => {
-    const storedSearchQuery = localStorage.getItem('searchQuery');
-    if (storedSearchQuery) {
-      setSearchQuery(storedSearchQuery);
+    if(location.pathname !== '/saved-movies') {
+      const storedSearchQuery = localStorage.getItem('searchQuery');
+      if (storedSearchQuery !== null) {
+        setSearchQuery(storedSearchQuery);
+      }
     }
   }, []);
 

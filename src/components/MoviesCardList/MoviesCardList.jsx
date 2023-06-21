@@ -38,7 +38,7 @@ function MoviesCardList({ movies, preloader, setPreloader, savedMovies, isMovieA
   return (
       <div className="movies-cards__container">
       {
-        moviesToShow.length > 0 ? (
+        moviesToShow?.length > 0 ? (
           moviesToShow?.slice(0, numberOfMovies).map((movie) => {
             return (
               <MoviesCard 
@@ -55,7 +55,7 @@ function MoviesCardList({ movies, preloader, setPreloader, savedMovies, isMovieA
         )
       }
       {preloader && <Preloader />}
-      {moviesToShow.length > numberOfMovies && (
+      {moviesToShow?.length > numberOfMovies && (
         <button className={`movies-cards__more-button ${preloader ? 'movies-cards__more-button-hidden' : ''}`} type='button' onClick={showMoreMovies}>Ещё</button>
       )}
     </div>

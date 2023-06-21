@@ -33,11 +33,12 @@ function App() {
   const [allMovies, setAllMovies] = React.useState([]);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
+  const [filterSavedMovies, setFilterSavedMovies] = React.useState([]);
 
   const [preloader, setPreloader] = React.useState(false);
 
 
-  // const [query, setQuery] = React.useState('');
+  const [query, setQuery] = React.useState('');
 
   function checkToken() {
     const path = location.pathname;
@@ -124,23 +125,23 @@ function App() {
       })
   }
 
+  function searchFilter(data, searchQuery) {
+    if (searchQuery) {
+      return data.filter((item) => item.nameRU.toLowerCase().includes(searchQuery.toLowerCase()))
+    }
+    return [];
+  };
+
   function handleSearch(searchQuery) {
     setPreloader(true);
     setTimeout(() => {
-      // setQuery(searchQuery);
+      setQuery(searchQuery);
       const filtered = searchFilter(allMovies, searchQuery);
       setFilteredMovies(filtered);
       localStorage.setItem('filteredMovies', JSON.stringify(filtered));
       setPreloader(false);
     }, 600);
   }
-
-    function searchFilter(data, searchQuery) {
-    if (searchQuery) {
-      return data.filter((item) => item.nameRU.toLowerCase().includes(searchQuery.toLowerCase()))
-    }
-    return [];
-  };
 
   React.useEffect(() => {
     const storedResults = JSON.parse(localStorage.getItem('filteredMovies'));
@@ -224,8 +225,9 @@ function App() {
   const saveHandler = (movie, isAdded) => (isAdded ? saveMovie(movie) : deleteMovie(movie));
 
   React.useEffect(() => {
+    setFilterSavedMovies(searchFilter(savedMovies, query));
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-  }, [savedMovies])
+  }, [savedMovies, query])
   
   return (
     <CurrentUserContext.Provider value={currentUser}>
