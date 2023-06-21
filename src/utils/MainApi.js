@@ -96,5 +96,5 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'api.moviesearch.nomoredomains.monster',
+  baseUrl: 'https://api.moviesearch.nomoredomains.monster',
 })
