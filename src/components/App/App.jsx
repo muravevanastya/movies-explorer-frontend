@@ -270,7 +270,7 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 isMovieAdded={isMovieAdded}
                 movies={savedMovies}
-                savedMovies
+                savedMovies={savedMovies}
                 onSaveClick={saveHandler}
               />
               <Footer />

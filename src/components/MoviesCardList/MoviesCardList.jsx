@@ -40,7 +40,7 @@ function MoviesCardList({ movies, preloader, savedMovies, isMovieAdded, onSaveCl
       <div className="movies-cards__container">
       {preloader ? <Preloader/> :
         moviesToShow?.length > 0 ? (
-          moviesToShow?.slice(0, numberOfMovies).map((movie) => {
+          moviesToShow?.slice(0, savedMovies ? Infinity : numberOfMovies).map((movie) => {
             return (
               <MoviesCard 
                 key={movie.id} 
