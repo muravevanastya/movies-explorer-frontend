@@ -4,7 +4,7 @@ import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
-function Login({ onAuth, loginError, loginErrorMessage }) {
+function Login({ onAuth, loginError, loginErrorMessage, setLoginErrorMessage }) {
   const { values, errors, isValid, handleChange } = useFormWithValidation();
 
   function handleSubmit(evt) {
@@ -13,6 +13,10 @@ function Login({ onAuth, loginError, loginErrorMessage }) {
     const { password, email } = values;
     onAuth({ password, email })
   }
+
+  React.useEffect(() => {
+    setLoginErrorMessage('');
+  }, [setLoginErrorMessage]);
 
   return (
   <main className='login'>

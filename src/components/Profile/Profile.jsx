@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useFormWithValidation } from '../../utils/useFormWithValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile({ handleSignOut, onEdit, editErrorMessage, editSuccessMessage, isEditProfileSuccessful }) {
+function Profile({ handleSignOut, onEdit, editErrorMessage, editSuccessMessage, isEditProfileSuccessful, setIsEditProfileSuccessful }) {
   const { values, errors, isValid, handleChange, setValues } = useFormWithValidation();
   const currentUser = React.useContext(CurrentUserContext);
   const [isDataChanged, setIsDataChanged] = React.useState(false);
@@ -30,6 +30,10 @@ function Profile({ handleSignOut, onEdit, editErrorMessage, editSuccessMessage, 
       currentUser.email,
     );
   }, [setValues, currentUser.name, currentUser.email]);
+
+  React.useEffect(() => {
+    setIsEditProfileSuccessful(false);
+  }, [setIsEditProfileSuccessful]);
 
   return (
     <main className='profile'>

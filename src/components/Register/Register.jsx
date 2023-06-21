@@ -4,7 +4,7 @@ import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
-function Register({ onRegister, registrationError, registrationErrorMessage }) {
+function Register({ onRegister, registrationError, registrationErrorMessage, setRegistrationErrorMessage }) {
   const { values, errors, isValid, handleChange } = useFormWithValidation();
 
   function handleSubmit(evt) {
@@ -13,6 +13,10 @@ function Register({ onRegister, registrationError, registrationErrorMessage }) {
     const { password, email, name } = values;
     onRegister({ password, email, name });
   }
+
+  React.useEffect(() => {
+    setRegistrationErrorMessage('');
+  }, [setRegistrationErrorMessage]);
 
   return (
     <main className='register'>

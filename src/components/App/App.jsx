@@ -238,7 +238,7 @@ function App() {
   React.useEffect(() => {
     // setFilterSavedMovies(searchFilter(savedMovies, query));
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-  }, [savedMovies, query])
+  }, [savedMovies])
   
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -302,6 +302,7 @@ function App() {
                 editErrorMessage={editErrorMessage}
                 editSuccessMessage={editSuccessMessage}
                 isEditProfileSuccessful={isEditProfileSuccessful}
+                setIsEditProfileSuccessful={setIsEditProfileSuccessful}
               />
               </>
             }
@@ -311,6 +312,7 @@ function App() {
             onAuth={handleAuth}
             loginError={loginError}
             loginErrorMessage={loginErrorMessage}
+            setLoginErrorMessage={setLoginErrorMessage}
           />}
           />
           <Route path='/signup'
@@ -319,6 +321,7 @@ function App() {
             onRegister={handleRegister}
             registrationError={registrationError}
             registrationErrorMessage={registrationErrorMessage}
+            setRegistrationErrorMessage={setRegistrationErrorMessage}
           />}
           />
           <Route path='*'
