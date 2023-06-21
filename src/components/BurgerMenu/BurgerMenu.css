@@ -1,14 +1,23 @@
 .burger-menu__button {
   position: absolute;
-  background: url('../../images/burger-menu-button.svg');
-  background-repeat: no-repeat;
-  background-position: center;
   width: 44px;
   height: 44px;
   border: none;
   cursor: pointer;
   top: 15px;
   right: 0;
+}
+
+.burger-menu__button-black {
+  background: url('../../images/burger-menu-button.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.burger-menu__button-white {
+  background: url('../../images/burger-menu-button-white.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .burger-menu__button:hover {

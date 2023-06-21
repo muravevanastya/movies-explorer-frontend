@@ -1,9 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Navigation.css';
-import accountIcon from '../../images/account-icon.svg'
+import accountIcon from '../../images/account-icon.svg';
+import accountIconWhite from '../../images/account-icon-white.svg';
 
 function Navigation({ isLoggedIn }) {
+  const location = useLocation();
+
   return (
     <nav className='navigation'>
       {!isLoggedIn ? (
@@ -16,19 +19,20 @@ function Navigation({ isLoggedIn }) {
           </li>
         </ul>
       ) : (
-      <ul className='navigation__list navigation__list-hidden'>
-        <li className='navigation__list-item'>
-          <NavLink to='/movies' className='navigation__list-item-films'>Фильмы</NavLink>
-        </li>
-        <li className='navigation__list-item'>
-          <NavLink to='/saved-movies' className='navigation__list-item-films'>Сохранённые фильмы</NavLink>
-        </li>
-        <li className='navigation__list-item-account'>
-          <img className='navigation__list-item-account-img' src={accountIcon} alt='Иконка человека' />
-          <NavLink to='/profile' className='navigation__list-item-account-text'>Аккаунт</NavLink>
-        </li>
-      </ul>
-      )}
+        <ul className='navigation__list navigation__list-hidden'>
+          <li className='navigation__list-item'>
+            <NavLink to='/movies' className={`navigation__list-item-films ${location.pathname === '/' ? 'navigation__list-item-films-white' : 'navigation__list-item-films-black'}`}>Фильмы</NavLink>
+          </li>
+          <li className='navigation__list-item'>
+            <NavLink to='/saved-movies' className={`navigation__list-item-films ${location.pathname === '/' ? 'navigation__list-item-films-white' : 'navigation__list-item-films-black'}`}>Сохранённые фильмы</NavLink>
+          </li>
+          <li className='navigation__list-item-account'>
+            <img className='navigation__list-item-account-img' src={location.pathname === '/' ? accountIconWhite : accountIcon} alt='Иконка человека' />
+            <NavLink to='/profile' className={`navigation__list-item-account-text ${location.pathname === '/' ? 'navigation__list-item-account-text-white' : 'navigation__list-item-account-text-black'}`}>Аккаунт</NavLink>
+          </li>
+        </ul>
+        )
+      }
     </nav>
   )
 }

@@ -44,9 +44,17 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: #000000;
+  /* color: #000000; */
   text-decoration: none;
   margin-right: 20px;
+}
+
+.navigation__list-item-films-white {
+  color: #fff;
+}
+
+.navigation__list-item-films-black {
+  color: #000000;
 }
 
 .navigation__list-item-films.active {
@@ -70,11 +78,18 @@
 }
 
 .navigation__list-item-account-text {
-  color: #000000;
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
+}
+
+.navigation__list-item-account-text-white {
+  color: #fff;
+}
+
+.navigation__list-item-account-text-black {
+  color: #000000;
 }
 
 @media screen and (max-width: 769px) {

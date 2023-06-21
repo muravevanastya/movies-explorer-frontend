@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import './BurgerMenu.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import accountIcon from '../../images/account-icon.svg';
 import closeButton from '../../images/close-btn.svg';
 
 function BurgerMenu() {
+  const location = useLocation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuOpen = () => {
@@ -17,7 +19,7 @@ function BurgerMenu() {
 
   return (
     <div className='burger-menu'>
-      <button className='burger-menu__button' onClick={handleMenuOpen}></button>
+      <button className={`burger-menu__button ${location.pathname === '/' ? 'burger-menu__button-white' : 'burger-menu__button-black'}`} onClick={handleMenuOpen}></button>
       <div className={`burger-menu__content ${isMenuOpen ? 'burger-menu__content-active' : ''}`} >
         <img className='burger-menu__close-button' src={closeButton} alt='Закрыть меню' onClick={handleMenuClose}/>
         <nav className='burger-menu__navigation'>
