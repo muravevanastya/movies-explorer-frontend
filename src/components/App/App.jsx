@@ -105,6 +105,15 @@ function App() {
     setSavedMovies([]);
   }
 
+  React.useEffect(() => {
+    if (isLoggedIn) {
+      const path = location.pathname;
+      if (path === '/signin' || path === '/signup') {
+        navigate('/movies', { replace: true });
+      }
+    }
+  }, [isLoggedIn, location, navigate]);
+
   function handleEditUser(userData) {
     api.setUserInfoApi(userData.name, userData.email)
       .then((data) => {

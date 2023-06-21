@@ -77,7 +77,7 @@ function Profile({ handleSignOut, onEdit, editErrorMessage, editSuccessMessage, 
         <span className={`profile__error-message ${isEditProfileSuccessful ? 'profile__success-message-active' : 'profile__error-message-active'}`}>{isEditProfileSuccessful ? editSuccessMessage : editErrorMessage}</span>
         <div className='profile__settings'>
           <button className={`profile__settings-update ${(!isValid || !isDataChanged) && 'profile__settings-update-disabled'}`} disabled={!isValid || !isDataChanged} type='submit' onClick={handleSubmit}>Редактировать</button>
-          <Link to='/signin' className='profile__settings-signout' onClick={handleSignOut}>Выйти из аккаунта</Link>
+          <Link to='/' className='profile__settings-signout' onClick={handleSignOut}>Выйти из аккаунта</Link>
         </div>
       </form>
     </main>
