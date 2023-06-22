@@ -1,18 +1,23 @@
-.burger-menu-hidden {
-  display: none;
-}
-
 .burger-menu__button {
   position: absolute;
-  background: url('../../images/burger-menu-button.svg');
-  background-repeat: no-repeat;
-  background-position: center;
   width: 44px;
   height: 44px;
   border: none;
   cursor: pointer;
   top: 15px;
   right: 0;
+}
+
+.burger-menu__button-black {
+  background: url('../../images/burger-menu-button.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.burger-menu__button-white {
+  background: url('../../images/burger-menu-button-white.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .burger-menu__button:hover {
@@ -82,10 +87,11 @@
   line-height: 22px;
   text-decoration: none;
   color: #000000;
+  padding-bottom: 4px;
 }
 
-.burger-menu__list-item-text-active {
-  border-bottom: 1px solid black;
+.burger-menu__list-item-text.active {
+  border-bottom: 2px solid black;
 }
 
 .burger-menu__list-item-account {
@@ -115,12 +121,6 @@
 .burger-menu__list-item-account:hover {
   opacity: 0.6;
   transition: .2s ease-in-out;
-}
-
-@media screen and (min-width: 770px) {
-  .burger-menu  {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 500px) {

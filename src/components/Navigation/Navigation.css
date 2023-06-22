@@ -41,21 +41,24 @@
 }
 
 .navigation__list-item-films {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: #000000;
+  /* color: #000000; */
   text-decoration: none;
   margin-right: 20px;
 }
 
-.navigation__list-item-saved-films {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 18px;
+.navigation__list-item-films-white {
+  color: #fff;
+}
+
+.navigation__list-item-films-black {
   color: #000000;
-  text-decoration: none;
-  margin-right: 50px;
+}
+
+.navigation__list-item-films.active {
+  font-weight: 500;
 }
 
 .navigation__list-item-account {
@@ -65,6 +68,7 @@
   align-items: center;
   border: 2px solid rgba(0, 0, 0, 0.08);
   border-radius: 50px;
+  margin-left: 50px;
 }
 
 .navigation__list-item-account-img {
@@ -74,18 +78,21 @@
 }
 
 .navigation__list-item-account-text {
-  color: #000000;
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
 }
 
+.navigation__list-item-account-text-white {
+  color: #fff;
+}
+
+.navigation__list-item-account-text-black {
+  color: #000000;
+}
+
 @media screen and (max-width: 769px) {
-  .navigation__list-hidden {
-    display: none;
-  }
-  
   .navigation__list-item-signin {
     border: none;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);

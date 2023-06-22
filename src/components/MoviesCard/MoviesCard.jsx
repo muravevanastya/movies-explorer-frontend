@@ -1,17 +1,39 @@
 import './MoviesCard.css';
-import moviePhoto from '../../images/movie-photo.jpg';
 
-function MoviesCard(props) {
+function MoviesCard({ movie, savedMovies, isMovieAdded, onSaveClick }) {
+
+  function getMoviesDuration() {
+    const hour = Math.floor((movie.duration / 60)) + 'ч';
+    
+    if(movie.duration % 60 === 0) {
+      return hour;
+    } else if(movie.duration > 60) {
+      return hour + ' ' + (movie.duration % 60 + 'м');
+    } else {
+      return movie.duration + 'м';
+    }
+  }
+
+  const isAdded = isMovieAdded(movie);
+
+  function handleSaveOrDeleteClick(evt) {
+    evt.preventDefault();
+
+    onSaveClick(movie, !isAdded)
+  }
+
   return (
     <div className='movie'>
       <div className='movie__description'>
         <div className='movie__info'>
-          <p className='movie__name'>{props.movie.name}</p>
-          <p className='movie__duration'>1ч 42м</p>
+          <p className='movie__name'>{movie.nameRU}</p>
+          <p className='movie__duration'>{getMoviesDuration()}</p>
         </div>
-        <button className='movie__save'></button>
+        <button className={`movie__save ${savedMovies ? 'movie__delete' : 'movie__save'} ${isAdded ? 'movie__save_active' : ''}`} onClick={handleSaveOrDeleteClick} ></button>
       </div>
-      <img className='movie__photo' src={moviePhoto} alt="Картинка фильма" />
+      <a className='movie__link' href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
+        <img className='movie__photo' src={savedMovies ? movie.image : 'https://api.nomoreparties.co/' + movie.image.url} alt={`Картинка фильма ${movie.nameRU}`} />
+      </a>
     </div>
   )
 }
