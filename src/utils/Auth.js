@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://0.0.0.0:3003';
+export const BASE_URL = 'http://80.76.60.187:3003';
 
 const handleResponse = response => response.ok ? response.json() : Promise.reject(`Ошибка ${response.status}`);
 
