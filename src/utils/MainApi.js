@@ -96,5 +96,5 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.moviesearch.nomoredomains.monster',
+  baseUrl: 'http://localhost/api',
 })
