@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost/api';
+export const BASE_URL = 'http://0.0.0.0:3003';
 
 const handleResponse = response => response.ok ? response.json() : Promise.reject(`Ошибка ${response.status}`);
 
