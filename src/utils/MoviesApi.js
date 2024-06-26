@@ -23,7 +23,7 @@ class MoviesApi {
 }
 
 const moviesApi = new MoviesApi({
-  baseUrl: 'http://localhost/api',
+  baseUrl: 'http://0.0.0.0:3003',
 })
 
 export {moviesApi};
