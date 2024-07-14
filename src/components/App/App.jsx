@@ -250,7 +250,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <HashRouter>
+        {/* <HashRouter> */}
           <Routes>
             <Route path='/'
               element={
@@ -336,7 +336,7 @@ function App() {
               element={<NotFound />}
             />
           </Routes>
-        </HashRouter>
+        {/* </HashRouter> */}
       </div>
     </CurrentUserContext.Provider>
   );
