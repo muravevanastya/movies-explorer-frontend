@@ -138,6 +138,7 @@ function App() {
       .then((allMoviesData) => {
         localStorage.setItem('allMovies', JSON.stringify(allMoviesData));
         setAllMovies(allMoviesData);
+        setFilteredMovies(allMoviesData);
       })
       .catch(() => {
         localStorage.removeItem('allMovies');
