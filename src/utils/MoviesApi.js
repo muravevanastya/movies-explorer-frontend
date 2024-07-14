@@ -23,7 +23,7 @@ class MoviesApi {
 }
 
 const moviesApi = new MoviesApi({
-  baseUrl: 'http://80.76.60.187:3003',
+  baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
 })
 
 export {moviesApi};
