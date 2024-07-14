@@ -80,6 +80,7 @@ function App() {
             setCurrentUser(res.user);
             setIsLoggedIn(true);
             navigate('/movies', { replace: true });
+            console.log(res.user);
           })
       })
       .catch((err) => {
