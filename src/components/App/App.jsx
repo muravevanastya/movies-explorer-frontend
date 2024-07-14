@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation, HashRouter } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -250,91 +250,93 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Routes>
-          <Route path='/'
-            element={
-              <>
-              <Header isLoggedIn={isLoggedIn} />
-              <Main />
-              <Footer />
-              </>
-            }
-          />
-          <Route path='/movies'
-            element={
-              <>
-              <Header isLoggedIn={isLoggedIn} />
-              <ProtectedRouteElement 
-                component={Movies}
-                isLoggedIn={isLoggedIn}
-                movies={filteredMovies}
-                onSubmitSearch={handleSearch}
-                preloader={preloader}
-                setPreloader={setPreloader}
-                isMovieAdded={isMovieAdded}
-                savedMovies={false}
-                onSaveClick={saveHandler}
-                loadingError={loadingError}
-              />
-              <Footer />
-              </>
-            }
-          />
-          <Route path='/saved-movies'
-            element={
-              <>
-              <Header isLoggedIn={isLoggedIn} />
-              <ProtectedRouteElement 
-                component={SavedMovies}
-                isLoggedIn={isLoggedIn}
-                isMovieAdded={isMovieAdded}
-                movies={savedMovies}
-                savedMovies={savedMovies}
-                onSaveClick={saveHandler}
-                loadingError={loadingError}
-              />
-              <Footer />
-              </>
-            }
-          />
-          <Route path='/profile'
-            element={
-              <>
-              <Header isLoggedIn={isLoggedIn} />
-              <ProtectedRouteElement 
-                component={Profile}
-                isLoggedIn={isLoggedIn}
-                handleSignOut={handleSignOut}
-                onEdit={handleEditUser}
-                editErrorMessage={editErrorMessage}
-                editSuccessMessage={editSuccessMessage}
-                isEditProfileSuccessful={isEditProfileSuccessful}
-                setIsEditProfileSuccessful={setIsEditProfileSuccessful}
-              />
-              </>
-            }
-          />
-          <Route path='/signin'
-            element={<Login 
-            onAuth={handleAuth}
-            loginError={loginError}
-            loginErrorMessage={loginErrorMessage}
-            setLoginErrorMessage={setLoginErrorMessage}
-          />}
-          />
-          <Route path='/signup'
-            
-            element={<Register
-            onRegister={handleRegister}
-            registrationError={registrationError}
-            registrationErrorMessage={registrationErrorMessage}
-            setRegistrationErrorMessage={setRegistrationErrorMessage}
-          />}
-          />
-          <Route path='*'
-            element={<NotFound />}
-          />
-        </Routes>
+        <HashRouter>
+          <Routes>
+            <Route path='/'
+              element={
+                <>
+                <Header isLoggedIn={isLoggedIn} />
+                <Main />
+                <Footer />
+                </>
+              }
+            />
+            <Route path='/movies'
+              element={
+                <>
+                <Header isLoggedIn={isLoggedIn} />
+                <ProtectedRouteElement 
+                  component={Movies}
+                  isLoggedIn={isLoggedIn}
+                  movies={filteredMovies}
+                  onSubmitSearch={handleSearch}
+                  preloader={preloader}
+                  setPreloader={setPreloader}
+                  isMovieAdded={isMovieAdded}
+                  savedMovies={false}
+                  onSaveClick={saveHandler}
+                  loadingError={loadingError}
+                />
+                <Footer />
+                </>
+              }
+            />
+            <Route path='/saved-movies'
+              element={
+                <>
+                <Header isLoggedIn={isLoggedIn} />
+                <ProtectedRouteElement 
+                  component={SavedMovies}
+                  isLoggedIn={isLoggedIn}
+                  isMovieAdded={isMovieAdded}
+                  movies={savedMovies}
+                  savedMovies={savedMovies}
+                  onSaveClick={saveHandler}
+                  loadingError={loadingError}
+                />
+                <Footer />
+                </>
+              }
+            />
+            <Route path='/profile'
+              element={
+                <>
+                <Header isLoggedIn={isLoggedIn} />
+                <ProtectedRouteElement 
+                  component={Profile}
+                  isLoggedIn={isLoggedIn}
+                  handleSignOut={handleSignOut}
+                  onEdit={handleEditUser}
+                  editErrorMessage={editErrorMessage}
+                  editSuccessMessage={editSuccessMessage}
+                  isEditProfileSuccessful={isEditProfileSuccessful}
+                  setIsEditProfileSuccessful={setIsEditProfileSuccessful}
+                />
+                </>
+              }
+            />
+            <Route path='/signin'
+              element={<Login 
+              onAuth={handleAuth}
+              loginError={loginError}
+              loginErrorMessage={loginErrorMessage}
+              setLoginErrorMessage={setLoginErrorMessage}
+            />}
+            />
+            <Route path='/signup'
+              
+              element={<Register
+              onRegister={handleRegister}
+              registrationError={registrationError}
+              registrationErrorMessage={registrationErrorMessage}
+              setRegistrationErrorMessage={setRegistrationErrorMessage}
+            />}
+            />
+            <Route path='*'
+              element={<NotFound />}
+            />
+          </Routes>
+        </HashRouter>
       </div>
     </CurrentUserContext.Provider>
   );
